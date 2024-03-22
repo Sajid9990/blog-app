@@ -16,11 +16,12 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/components" element={<Index />} />
-      <Route path="/landing-page" element={<LandingPage />} />
-      <Route path="/register-page" element={<RegisterPage />} />
-      <Route path="/profile-page" element={<ProfilePage />} />
-      <Route path="*" element={<Navigate to="/components" replace />} />
+      Hello
+      {/* <Route path="/components" element={<Index />} /> */}
+      {/* <Route path="/landing-page" element={<LandingPage />} /> */}
+      {/* <Route path="/register-page" element={<RegisterPage />} /> */}
+      {/* <Route path="/profile-page" element={<ProfilePage />} /> */}
+      {/* <Route path="*" element={<Navigate to="/components" replace />} /> */}
     </Routes>
   </BrowserRouter>
 );
