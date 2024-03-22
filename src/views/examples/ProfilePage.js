@@ -44,22 +44,22 @@ import {
 } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import Footer from "components/Footer/Footer.js";
+import ExamplesNavbar from "./../../components/Navbars/ExamplesNavbar.js";
+import Footer from "./../../components/Footer/Footer.js";
 
 const carouselItems = [
   {
-    src: require("assets/img/denys.jpg"),
+    src: require("./../../assets/img/denys.jpg"),
     altText: "Slide 1",
     caption: "Big City Life, United States",
   },
   {
-    src: require("assets/img/fabien-bazanegue.jpg"),
+    src: require("./../../assets/img/fabien-bazanegue.jpg"),
     altText: "Slide 2",
     caption: "Somewhere Beyond, United States",
   },
   {
-    src: require("assets/img/mark-finn.jpg"),
+    src: require("./../../assets/img/mark-finn.jpg"),
     altText: "Slide 3",
     caption: "Stocks, United States",
   },
@@ -97,12 +97,12 @@ export default function ProfilePage() {
           <img
             alt="..."
             className="dots"
-            src={require("assets/img/dots.png")}
+            src={require("./../../assets/img/dots.png")}
           />
           <img
             alt="..."
             className="path"
-            src={require("assets/img/path4.png")}
+            src={require("./../../assets/img/path4.png")}
           />
           <Container className="align-items-center">
             <Row>
@@ -160,7 +160,7 @@ export default function ProfilePage() {
                     <img
                       alt="..."
                       className="img-center img-fluid rounded-circle"
-                      src={require("assets/img/mike.jpg")}
+                      src={require("./../../assets/img/mike.jpg")}
                     />
                     <h4 className="title">Transactions</h4>
                   </CardHeader>
