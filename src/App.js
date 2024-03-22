@@ -10,7 +10,9 @@ function App() {
           <Route path="/other" exact element={<OtherComp />} /> */}
         {/* </Routes> */}
       {/* </BrowserRouter> */}
+      <div id="myDiv">
       Hello world
+      </div>
     </Fragment>
   );
 }
