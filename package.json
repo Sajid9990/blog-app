@@ -1,68 +1,34 @@
 {
-  "name": "Blogging Application",
+  "name": "blank-app",
   "homepage": "https://sajid9990.github.io/blog-app",
-  "version": "1.2.2",
-  "description": "Here is my blog application",
-  "main": "index.js",
-  "author": "SAJID SAIFI",
-  "license": "MIT",
-  "keywords": [
-    "Blogging",
-    "blog",
-    "nature",
-    "news",
-    "viral videos",
-    "viral content"
-  ],
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "5.16.5",
-    "@testing-library/react": "14.0.0",
-    "@testing-library/user-event": "14.4.3",
-    "bootstrap": "4.6.2",
-    "chart.js": "2.9.4",
-    "classnames": "2.3.1",
-    "moment": "2.29.4",
-    "nouislider": "15.4.0",
-    "perfect-scrollbar": "1.5.5",
-    "react": ">=16.8.0",
-    "react-chartjs-2": "2.11.2",
-    "react-datetime": "3.2.0",
-    "react-dom": ">=16.8.0",
-    "react-router-dom": "6.11.1",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "bootstrap": "^5.3.3",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.10.1",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.2",
     "react-scripts": "5.0.1",
-    "reactstrap": "8.10.0",
-    "sass": "1.62.1",
-    "web-vitals": "3.3.1"
-  },
-  "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
-  },
-  "optionalDependencies": {
-    "jquery": "3.7.0",
-    "typescript": "5.0.4"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "analyze": "node analyzer.js",
     "start": "react-scripts start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
-    "compile-sass": "sass src/assets/scss/blk-design-system-react.scss src/assets/css/blk-design-system-react.css",
-    "minify-sass": "sass src/assets/scss/blk-design-system-react.scss src/assets/css/blk-design-system-react.min.css --style compressed"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
-  },
-  "overrides": {
-    "svgo": "3.0.2",
-    "chokidar": "3.5.3",
-    "fsevents": "2.3.2"
   },
   "browserslist": {
     "production": [
@@ -77,6 +43,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1"
+    "gh-pages": "^6.1.1",
+    "webpack-bundle-analyzer": "^4.10.1"
   }
 }
