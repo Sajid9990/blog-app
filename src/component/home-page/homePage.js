@@ -44,8 +44,8 @@ function HomePage() {
                         latestArtciles.length > 0 ?
                             latestArtciles.map((article, index) => {
                                 return (
-                                    <Col md={4} key={index} className='mb-4'>
-                                        <Card style={{ width: '25rem' }}>
+                                    <Col md={3} key={index} className='mb-4'>
+                                        <Card style={{ width: '18rem' }}>
                                             <Card.Img variant="top" src={article.icon_image} />
                                             <Card.Body>
                                                 <Card.Title>{article.title}</Card.Title>

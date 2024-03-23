@@ -62,7 +62,7 @@ function BlogPage() {
                         <img style={{ width: "100%" }} src={articleInfo.feature_image} />
                     </Col>
                     <Col md={6} className='mt-4'>
-                        <h1 style={{ fontSize: "80px" }}>{articleInfo.title}</h1>
+                        <h1 style={{ fontSize: "50px" }}>{articleInfo.title}</h1>
                         <h3 className='mt-5 mb-3'>
                             {articleInfo.description}
                         </h3>
