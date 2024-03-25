@@ -11,13 +11,13 @@ function App() {
   return (
     <Fragment>
       <BrowserRouter>
-        <HeaderNavbar />
+        {/* <HeaderNavbar /> */}
         <Routes>
           <Route path="/blog-app" exact element={<HomePage />} />
           <Route path="/read-blog/:articleId/:articleSlug" element={<BlogPage />} />
           <Route path="/aboutus" element={<AboutUs />} />
         </Routes>
-        <FooterNavbar />
+        {/* <FooterNavbar /> */}
       </BrowserRouter>
     </Fragment>
   );
