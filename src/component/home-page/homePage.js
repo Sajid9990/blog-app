@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -8,17 +8,39 @@ function HomePage() {
     const [pageSize, setPageSize] = useState(24);
     const [pageNumber, setPageNumber] = useState(Math.ceil(Math.random() * 10)); // rendom page number
 
+    const banner = useRef();
+
+    const atOptions = {
+        key: '9866282eec9d6f99e509f5957d00e971',
+        format: 'iframe',
+        height: 250,
+        width: 300,
+        params: {}
+    };
 
     const getLatestArticles = async () => {
-
-        // debugger
         const response = await axios.get(`https://api.thefactmagic.com/articles/latest/1/1/Vivo?page=${pageNumber}&size=${pageSize}`);
-
         if (response.status == 200) {
             setLatestArticles(response.data.content);
         }
-
     }
+
+    function ad() {
+        if (banner.current && !banner.current.firstChild) {
+            const conf = document.createElement('script');
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = `//www.topcreativeformat.com/${atOptions.key}/invoke.js`;
+            conf.innerHTML = `atOptions = ${JSON.stringify(atOptions)}`;
+
+            banner.current.append(conf);
+            banner.current.append(script);
+        }
+    }
+
+    useEffect(() => {
+        ad();
+    }, [banner]);
 
     useEffect(() => {
         getLatestArticles();
@@ -38,6 +60,7 @@ function HomePage() {
                             <h4 style={{ borderBottom: "2px solid blue" }} className='p-2 text-primary'>
                                 Trending Articles <span class="badge badge-success rounded bg-primary">{pageSize}</span>
                             </h4>
+                            <div className="mx-2 my-5 border border-gray-200 justify-center items-center text-white text-center" ref={banner}></div>
                         </Col>
                     </Row>
                     {
