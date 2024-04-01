@@ -58,7 +58,7 @@ function HomePage() {
                     <Row className='mb-3'>
                         <Col>
                             <h4 style={{ borderBottom: "2px solid blue" }} className='p-2 text-primary'>
-                                Trending Articles <span class="badge badge-success rounded bg-primary">{pageSize}</span>
+                                Trendingsssss Articles <span class="badge badge-success rounded bg-primary">{pageSize}</span>
                             </h4>
                             <div className="mx-2 my-5 border border-gray-200 justify-center items-center text-white text-center" ref={banner}></div>
                         </Col>
