@@ -31,6 +31,15 @@ const Home = () => {
   return (
     <React.Fragment>
       {/* <HomeHeader /> */}
+      <div>Helo</div>
+      <div>Helo</div>
+      <div>Helo</div>
+      <div>Helo</div>
+      <div>Helo</div>
+      <div>Helo</div>
+      <div>Helo</div>
+      <div>Helo</div>
+      <div>Helo</div>
       <CommonNavbar />
       <TrendingSection />
       <BannerArea />
