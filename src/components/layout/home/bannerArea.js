@@ -44,7 +44,7 @@ const BannerArea = () => {
           </Col>
           <Col lg="6">
             <div className="banner-thumb">
-              <img src="/blog-app/assets/img/banner/1.png" alt="Banner" className="img-fluid rounded" />
+              <img src="assets/img/banner/1.png" alt="Banner" className="img-fluid rounded" />
             </div>
           </Col>
         </Row>
@@ -54,7 +54,7 @@ const BannerArea = () => {
         <Row>
           <Col lg="3" sm="6" className="mb-4">
             <Card className="single-post-wrap shadow-sm" style={{ background: "none" }}>
-              <CardImg top src="/blog-app/assets/img/post/1.png" alt="Post" className="card-img" />
+              <CardImg top src="assets/img/post/1.png" alt="Post" className="card-img" />
               <Badge  className="badge-custom bg-primary text-light">Tech</Badge>
               <CardBody>
                 <CardTitle tag="h5" className="card-title">
@@ -72,7 +72,7 @@ const BannerArea = () => {
           </Col>
           <Col lg="3" sm="6" className="mb-4">
             <Card className="single-post-wrap shadow-sm" style={{ background: "none" }}>
-              <CardImg top src="/blog-app/assets/img/post/2.png" alt="Post" className="card-img" />
+              <CardImg top src="assets/img/post/2.png" alt="Post" className="card-img" />
               <Badge className="badge-custom bg-success text-dark">Food</Badge>
               <CardBody>
                 <CardTitle tag="h5" className="card-title">
@@ -90,7 +90,7 @@ const BannerArea = () => {
           </Col>
           <Col lg="3" sm="6" className="mb-4">
             <Card className="single-post-wrap shadow-sm" style={{ background: "none" }}>
-              <CardImg top src="/blog-app/assets/img/post/3.png" alt="Post" className="card-img" />
+              <CardImg top src="assets/img/post/3.png" alt="Post" className="card-img" />
               <Badge color="primary" className="badge-custom">Tech</Badge>
               <CardBody>
                 <CardTitle tag="h5" className="card-title">
@@ -108,7 +108,7 @@ const BannerArea = () => {
           </Col>
           <Col lg="3" sm="6" className="mb-4">
             <Card className="single-post-wrap shadow-sm" style={{ background: "none" }}>
-              <CardImg top src="/blog-app/assets/img/post/4.png" alt="Post" className="card-img" />
+              <CardImg top src="assets/img/post/4.png" alt="Post" className="card-img" />
               <Badge color="warning" className="badge-custom">Food</Badge>
               <CardBody>
                 <CardTitle tag="h5" className="card-title">

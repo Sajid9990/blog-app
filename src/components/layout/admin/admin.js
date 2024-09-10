@@ -32,7 +32,7 @@ const Admin = (props) => {
         routes={routes}
         logo={{
           innerLink: "",
-          imgSrc: "/blog-app/assets/logo.png",
+          imgSrc: "/assets/logo.png",
           imgAlt: "...",
         }}
       />

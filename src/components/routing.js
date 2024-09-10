@@ -4,21 +4,21 @@ import Profile from "./layout/admin/admin-pages/Profile";
 
 var routes = [
     {
-        path: "/blog-app/dashboard",
+        path: "/dashboard",
         name: "Dashboard",
         icon: "ni ni-tv-2 text-primary",
         component: <Dashboard />,
         layout: "/admin",
     },
     {
-        path: "/blog-app/user-profile",
+        path: "/user-profile",
         name: "User Profile",
         icon: "ni ni-single-02 text-yellow",
         component: <Profile />,
         layout: "/admin",
     },
     {
-        path: "/blog-app/icons",
+        path: "/icons",
         name: "Icons",
         icon: "ni ni-planet text-blue",
         component: <Icons />,

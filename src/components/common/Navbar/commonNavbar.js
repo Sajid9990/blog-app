@@ -62,7 +62,7 @@ const CommonNavbar = () => {
       >
         <Container className="px-2 d-flex align-items-center">
           <NavbarBrand to="/" tag={Link}>
-            <img alt="..." src={"blog-app/assets/logo.png"} />
+            <img alt="..." src={"assets/logo.png"} />
           </NavbarBrand>
           <div className="ml-auto">
             <button
@@ -91,7 +91,7 @@ const CommonNavbar = () => {
               <Row>
                 <Col className="collapse-brand" xs="6">
                   <Link to="/">
-                    <img alt="..." src={"blog-app/assets/logo.png"} />
+                    <img alt="..." src={"assets/logo.png"} />
                   </Link>
                 </Col>
                 <Col className="collapse-close" xs="6">

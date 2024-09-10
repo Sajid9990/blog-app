@@ -4,32 +4,32 @@ import { Container, Row, Col, Carousel, CarouselItem, CarouselIndicators, Button
 const TrendingNews = () => {
     const trendingItems = [
         {
-            imgSrc: '/blog-app/assets/img/post/5.png',
+            imgSrc: 'assets/img/post/5.png',
             date: 'December 26, 2018',
             title: 'The FAA will test drone',
         },
         {
-            imgSrc: '/blog-app/assets/img/post/6.png',
+            imgSrc: 'assets/img/post/6.png',
             date: 'December 26, 2018',
             title: 'Flight schedule and quarantine',
         },
         {
-            imgSrc: '/blog-app/assets/img/post/7.png',
+            imgSrc: 'assets/img/post/7.png',
             date: 'December 26, 2018',
             title: 'Indore bags cleanest city',
         },
         {
-            imgSrc: '/blog-app/assets/img/post/5.png',
+            imgSrc: 'assets/img/post/5.png',
             date: 'December 26, 2018',
             title: 'The FAA will test drone',
         },
         {
-            imgSrc: '/blog-app/assets/img/post/6.png',
+            imgSrc: 'assets/img/post/6.png',
             date: 'December 26, 2018',
             title: 'Flight schedule and quarantine',
         },
         {
-            imgSrc: '/blog-app/assets/img/post/7.png',
+            imgSrc: 'assets/img/post/7.png',
             date: 'December 26, 2018',
             title: 'Indore bags cleanest city',
         },
@@ -37,37 +37,37 @@ const TrendingNews = () => {
 
     const additionalArticles = [
         {
-            imgSrc: '/blog-app/assets/img/post/list/1.png',
+            imgSrc: 'assets/img/post/list/1.png',
             date: '08.22.2020',
             title: 'Himachal Pradesh rules in order to allow tourists',
         },
         {
-            imgSrc: '/blog-app/assets/img/post/list/2.png',
+            imgSrc: 'assets/img/post/list/2.png',
             date: '08.22.2020',
             title: 'Online registration, booking for Vaishno Devi',
         },
         {
-            imgSrc: '/blog-app/assets/img/post/list/3.png',
+            imgSrc: 'assets/img/post/list/3.png',
             date: '08.22.2020',
             title: 'Detecting technologies in airports this year',
         },
         {
-            imgSrc: '/blog-app/assets/img/post/list/2.png',
+            imgSrc: 'assets/img/post/list/2.png',
             date: '08.22.2020',
             title: 'Online registration, booking for Vaishno Devi',
         },
         {
-            imgSrc: '/blog-app/assets/img/post/list/3.png',
+            imgSrc: 'assets/img/post/list/3.png',
             date: '08.22.2020',
             title: 'Detecting technologies in airports this year',
         },
         {
-            imgSrc: '/blog-app/assets/img/post/list/2.png',
+            imgSrc: 'assets/img/post/list/2.png',
             date: '08.22.2020',
             title: 'Online registration, booking for Vaishno Devi',
         },
         {
-            imgSrc: '/blog-app/assets/img/post/list/3.png',
+            imgSrc: 'assets/img/post/list/3.png',
             date: '08.22.2020',
             title: 'Detecting technologies in airports this year',
         }
