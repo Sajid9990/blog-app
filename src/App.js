@@ -13,8 +13,8 @@ function App() {
       <Routes>
         <Route path="/blog-app" element={<Home />} />
         <Route path="/admin/*" element={<Admin />} />
-        <Route path="/auth/login" element={<LoginPage />} />
-        <Route path="/auth/signup" element={<SignupPage />} />
+        <Route path="/blog-app/auth/login" element={<LoginPage />} />
+        <Route path="/blog-app/auth/signup" element={<SignupPage />} />
         <Route path="/public/blog" element={<BlogPage />} />
         <Route path="*" element={<Error400 />} />
       </Routes>

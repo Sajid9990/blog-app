@@ -22,7 +22,7 @@ const CommonNavbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-     
+
       // Hide or show navbar based on scroll direction
       if (currentScrollY > 200) {
         if (currentScrollY > prevScrollY) {
@@ -123,7 +123,7 @@ const CommonNavbar = () => {
               <NavItem>
                 <NavLink
                   className="nav-link-icon"
-                  to="/auth/signup"
+                  to="/blog-app/auth/signup"
                   tag={Link}
                   onClick={() => setIsOpen(false)}
                   style={{ color: "white" }} // Change text color to white
@@ -135,7 +135,7 @@ const CommonNavbar = () => {
               <NavItem>
                 <NavLink
                   className="nav-link-icon"
-                  to="/auth/login"
+                  to="/blog-app/auth/login"
                   tag={Link}
                   onClick={() => setIsOpen(false)}
                   style={{ color: "white" }} // Change text color to white
