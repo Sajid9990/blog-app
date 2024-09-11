@@ -1,0 +1,24 @@
+---------------------------------------------------------------
+About Spring boot Security Authorization and Authentication
+---------------------------------------------------------------
+We are using Authorization and Authentication in spring boot using spring Security with the help of
+spring security dependency. and we are override the methods of WebSecurityConfigurerAdapter class have many methods
+to override that. There have 2 important methods for implementing authorization and authentication.
+
+there have lot of security method to implement and secure our spring boot application.
+
+Authentication where user will authenticated by the server if there have a valid token. to access the particular api's.
+Authorization where some url and api's are restricted for some user or some action.
+
+Maven dependency
+==================
+    <dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-security</artifactId>
+	</dependency>
+
+
+Url Explain
+==============
+There have two type of urls or api's where /api/public/... are open for everyone.
+and /api/private/... are need a valid token who are authorized to access there urls or api's.
