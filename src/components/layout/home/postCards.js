@@ -1,79 +1,69 @@
 import React from 'react';
-import { Container, Row, Col, Card, CardImg, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
+import { Container, Row, Col, Card, CardImg, CardBody, CardTitle, CardSubtitle, Badge } from 'reactstrap';
 
 const posts = [
     {
-        id: 1,
-        imgSrc: 'assets/img/post/15.png',
-        tag: 'Tech',
-        tagColor: 'purple',
-        title: 'Why Are the Offspring of Older',
-    },
-    {
-        id: 2,
-        imgSrc: 'assets/img/post/16.png',
-        tag: 'Tech',
-        tagColor: 'green',
-        title: 'People Who Eat a Late Dinner May',
-    },
-    {
-        id: 3,
-        imgSrc: 'assets/img/post/17.png',
-        tag: 'Tech',
-        tagColor: 'red',
-        title: 'Kids eat more calories in',
-    },
-    {
         id: 4,
-        imgSrc: 'assets/img/post/18.png',
+        imgSrc: '/blog-app/assets/img/post/18.png',
         tag: 'Tech',
-        tagColor: 'purple',
+        tagColor: 'danger',
         title: 'The FAA will test drone',
     },
     {
         id: 5,
-        imgSrc: 'assets/img/post/19.png',
+        imgSrc: '/blog-app/assets/img/post/19.png',
         tag: 'Tech',
-        tagColor: 'red',
+        tagColor: 'warning',
         title: 'Lifting Weights Makes Your Nervous',
     },
     {
         id: 6,
-        imgSrc: 'assets/img/post/20.png',
+        imgSrc: '/blog-app/assets/img/post/20.png',
         tag: 'Tech',
-        tagColor: 'blue',
+        tagColor: 'info',
         title: 'New, Remote Weight-Loss Method',
     },
     {
         id: 7,
-        imgSrc: 'assets/img/post/21.png',
+        imgSrc: '/blog-app/assets/img/post/21.png',
         tag: 'Tech',
-        tagColor: 'light-green',
+        tagColor: 'success',
         title: 'Social Connection Boosts Fitness App',
     },
     {
         id: 8,
-        imgSrc: 'assets/img/post/22.png',
+        imgSrc: '/blog-app/assets/img/post/22.png',
         tag: 'Tech',
-        tagColor: 'blue',
+        tagColor: 'primary',
+        title: 'Internet For Things - New results',
+    },
+    {
+        id: 8,
+        imgSrc: '/blog-app/assets/img/post/22.png',
+        tag: 'Tech',
+        tagColor: 'primary',
         title: 'Internet For Things - New results',
     },
 ];
 
-const PostCard = ({ imgSrc, tag, tagColor, date, title }) => (
-    <Col lg="3" sm="6">
-        <Card className="single-post-wrap style-overlay">
-            <div className="thumb">
-                <CardImg top src={imgSrc} alt="img" />
-                <a className={`tag-base tag-${tagColor}`} href="#">
-                    {tag}
-                </a>
-            </div>
-            <CardBody className="details">
-                <CardTitle className="title">
-                    <a href="#">{title}</a>
-                </CardTitle>
-            </CardBody>
+const PostCard = ({ imgSrc, tag, tagColor, title }) => (
+    <Col lg="4" sm="12" className="mb-4">
+        <Card className="post-card">
+            <Row noGutters>
+                <Col md="12">
+                    <div className="thumb">
+                        <CardImg top src={imgSrc} alt="Post Image" className="img-fluid" style={{ marginBottom: '15px' }} /> {/* Inline style for spacing */}
+                    </div>
+                </Col>
+                <Col md="12 p-2">
+                    <Badge color={tagColor} className="mb-2">
+                        {tag}
+                    </Badge>
+                    <CardTitle className="title">
+                        <a href="#">{title}</a>
+                    </CardTitle>
+                </Col>
+            </Row>
         </Card>
     </Col>
 );
@@ -81,8 +71,8 @@ const PostCard = ({ imgSrc, tag, tagColor, date, title }) => (
 const PostGrid = () => (
     <div className="pd-bottom-50 pt-5" id="grid">
         <Container>
-            <div className="section-title">
-                <h6 className="title"><u>Top Article</u></h6>
+            <div>
+                <h2><u>Articles</u></h2>
             </div>
         </Container>
         <Container>

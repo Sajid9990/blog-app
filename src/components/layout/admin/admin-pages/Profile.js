@@ -61,7 +61,7 @@ const Profile = () => {
                       <img
                         alt="..."
                         className="rounded-circle"
-                        src={"/assets/logo.png"}
+                        src={"/blog-app/assets/logo.png"}
                       />
                     </a>
                   </div>

@@ -4,32 +4,32 @@ import { Container, Row, Col, Carousel, CarouselItem, CarouselIndicators, Button
 const TrendingNews = () => {
     const trendingItems = [
         {
-            imgSrc: 'assets/img/post/5.png',
+            imgSrc: '/blog-app/assets/img/post/5.png',
             date: 'December 26, 2018',
             title: 'The FAA will test drone',
         },
         {
-            imgSrc: 'assets/img/post/6.png',
+            imgSrc: '/blog-app/assets/img/post/6.png',
             date: 'December 26, 2018',
             title: 'Flight schedule and quarantine',
         },
         {
-            imgSrc: 'assets/img/post/7.png',
+            imgSrc: '/blog-app/assets/img/post/7.png',
             date: 'December 26, 2018',
             title: 'Indore bags cleanest city',
         },
         {
-            imgSrc: 'assets/img/post/5.png',
+            imgSrc: '/blog-app/assets/img/post/5.png',
             date: 'December 26, 2018',
             title: 'The FAA will test drone',
         },
         {
-            imgSrc: 'assets/img/post/6.png',
+            imgSrc: '/blog-app/assets/img/post/6.png',
             date: 'December 26, 2018',
             title: 'Flight schedule and quarantine',
         },
         {
-            imgSrc: 'assets/img/post/7.png',
+            imgSrc: '/blog-app/assets/img/post/7.png',
             date: 'December 26, 2018',
             title: 'Indore bags cleanest city',
         },
@@ -37,37 +37,37 @@ const TrendingNews = () => {
 
     const additionalArticles = [
         {
-            imgSrc: 'assets/img/post/list/1.png',
+            imgSrc: '/blog-app/assets/img/post/list/1.png',
             date: '08.22.2020',
             title: 'Himachal Pradesh rules in order to allow tourists',
         },
         {
-            imgSrc: 'assets/img/post/list/2.png',
+            imgSrc: '/blog-app/assets/img/post/list/2.png',
             date: '08.22.2020',
             title: 'Online registration, booking for Vaishno Devi',
         },
         {
-            imgSrc: 'assets/img/post/list/3.png',
+            imgSrc: '/blog-app/assets/img/post/list/3.png',
             date: '08.22.2020',
             title: 'Detecting technologies in airports this year',
         },
         {
-            imgSrc: 'assets/img/post/list/2.png',
+            imgSrc: '/blog-app/assets/img/post/list/2.png',
             date: '08.22.2020',
             title: 'Online registration, booking for Vaishno Devi',
         },
         {
-            imgSrc: 'assets/img/post/list/3.png',
+            imgSrc: '/blog-app/assets/img/post/list/3.png',
             date: '08.22.2020',
             title: 'Detecting technologies in airports this year',
         },
         {
-            imgSrc: 'assets/img/post/list/2.png',
+            imgSrc: '/blog-app/assets/img/post/list/2.png',
             date: '08.22.2020',
             title: 'Online registration, booking for Vaishno Devi',
         },
         {
-            imgSrc: 'assets/img/post/list/3.png',
+            imgSrc: '/blog-app/assets/img/post/list/3.png',
             date: '08.22.2020',
             title: 'Detecting technologies in airports this year',
         }
@@ -120,8 +120,8 @@ const TrendingNews = () => {
             <Container>
                 <Row>
                     <Col lg="8">
-                        <div className="section-title">
-                            <h6 className="title"><u>Trending News</u></h6>
+                        <div>
+                            <h2><u>Trending News</u></h2>
                         </div>
                         <Carousel activeIndex={activeIndex} next={next} previous={previous}>
                             <CarouselIndicators items={trendingItems} activeIndex={activeIndex} onClickHandler={goToIndex} />
@@ -145,9 +145,10 @@ const TrendingNews = () => {
                         </Carousel>
                     </Col>
                     <Col lg="4">
-                        <div className="section-title">
-                            <h6 className="title"><u>Latest Articles</u></h6>
+                        <div>
+                            <h2><u>Latest Articles</u></h2>
                         </div>
+
                         <div style={{ height: '500px', overflowY: 'auto', paddingRight: '0' }}>
                             {additionalArticles.map((article, index) => (
                                 <div key={index} className="single-post-list-wrap" style={{ marginBottom: '20px' }}>
@@ -158,11 +159,9 @@ const TrendingNews = () => {
                                         <div className="media-body">
                                             <div className="details">
                                                 <div className="post-meta-single">
-                                                    <ul>
-                                                        <li><i className="fa fa-clock-o"></i>{article.date}</li>
-                                                    </ul>
+                                                    <h5> <i className="fa fa-clock-o"></i>{article.date}</h5>
                                                 </div>
-                                                <h6 className="title"><a href="#">{article.title}</a></h6>
+                                                <h4 className="title"><a href="#">{article.title}</a></h4>
                                             </div>
                                         </div>
                                     </div>
