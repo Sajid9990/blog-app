@@ -1,37 +1,47 @@
 import React from 'react';
 import { Container, Row, Col, Carousel, CarouselItem, CarouselIndicators, Button } from 'reactstrap';
-
+import "./trending.css";
 const TrendingNews = () => {
     const trendingItems = [
         {
-            imgSrc: '/blog-app/assets/img/post/5.png',
+            imgSrc: 'https://storage.googleapis.com/thefactmagic-stg/assets/imageupload/200-foot-giant-bunny_1200x627_ci2jpg1691565470378.webp',
             date: 'December 26, 2018',
             title: 'The FAA will test drone',
         },
         {
-            imgSrc: '/blog-app/assets/img/post/6.png',
+            imgSrc: 'https://storage.googleapis.com/thefactmagic-stg/assets/imageupload/iceland-parliament_1200x627_ci2jpg1685017525151.webp',
             date: 'December 26, 2018',
             title: 'Flight schedule and quarantine',
         },
         {
-            imgSrc: '/blog-app/assets/img/post/7.png',
+            imgSrc: 'https://storage.googleapis.com/thefactmagic-stg/assets/imageupload/salar-de-uyuni_1200x627_ci2jpg1684578939082.webp',
             date: 'December 26, 2018',
             title: 'Indore bags cleanest city',
         },
         {
-            imgSrc: '/blog-app/assets/img/post/5.png',
+            imgSrc: 'https://storage.googleapis.com/thefactmagic-stg/assets/imageupload/squirrel-dischromatic_1200x627_ci2jpg1684326320566.webp',
             date: 'December 26, 2018',
             title: 'The FAA will test drone',
         },
         {
-            imgSrc: '/blog-app/assets/img/post/6.png',
+            imgSrc: 'https://storage.googleapis.com/thefactmagic-stg/assets/imageupload/200-foot-giant-bunny_1200x627_ci2jpg1691565470378.webp',
+            date: 'December 26, 2018',
+            title: 'The FAA will test drone',
+        },
+        {
+            imgSrc: 'https://storage.googleapis.com/thefactmagic-stg/assets/imageupload/iceland-parliament_1200x627_ci2jpg1685017525151.webp',
             date: 'December 26, 2018',
             title: 'Flight schedule and quarantine',
         },
         {
-            imgSrc: '/blog-app/assets/img/post/7.png',
+            imgSrc: 'https://storage.googleapis.com/thefactmagic-stg/assets/imageupload/salar-de-uyuni_1200x627_ci2jpg1684578939082.webp',
             date: 'December 26, 2018',
             title: 'Indore bags cleanest city',
+        },
+        {
+            imgSrc: 'https://storage.googleapis.com/thefactmagic-stg/assets/imageupload/squirrel-dischromatic_1200x627_ci2jpg1684326320566.webp',
+            date: 'December 26, 2018',
+            title: 'The FAA will test drone',
         },
     ];
 
@@ -104,9 +114,11 @@ const TrendingNews = () => {
                     <div className="thumb" style={{ width: '100%', height: '100%' }}>
                         <img src={item.imgSrc} alt="img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
-                    <div className="details" style={{ position: 'absolute', bottom: '20px', left: '20px', color: '#fff' }}>
+                    <div className="details element" style={{ width:"100%",position: 'absolute', bottom: '80%',paddingLeft:"10px", color: '#fff' }}>
                         <div className="post-meta-single">
-                            <p style={{ fontSize: '14px' }}><i className="fa fa-clock-o"></i> {item.date}</p>
+                            <p style={{ fontSize: '14px',color: '#fff' }}>
+                                <i class="ni ni-clock" aria-hidden="true"></i>
+                                {item.date}</p>
                         </div>
                         <h6 className="title" style={{ fontSize: '18px' }}><a href="#" style={{ color: '#fff' }}>{item.title}</a></h6>
                     </div>
@@ -123,6 +135,7 @@ const TrendingNews = () => {
                         <div>
                             <h2><u>Trending News</u></h2>
                         </div>
+
                         <Carousel activeIndex={activeIndex} next={next} previous={previous}>
                             <CarouselIndicators items={trendingItems} activeIndex={activeIndex} onClickHandler={goToIndex} />
                             {slides}
