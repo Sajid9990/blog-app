@@ -121,16 +121,17 @@ const CommonNavbar = () => {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink
+                {/* <NavLink
                   className="nav-link-icon"
                   to="/blog-app/auth/signup"
                   tag={Link}
                   onClick={() => setIsOpen(false)}
                   style={{ color: "white" }} // Change text color to white
-                >
+                > */}
                   <i className="ni ni-circle-08" style={{ color: "white" }} /> {/* Change icon color to white */}
-                  <span className="nav-link-inner--text" style={{ color: "white" }}>Register</span> {/* Change text color to white */}
-                </NavLink>
+                  <span className="nav-link-inner--text" style={{ color: "white" }}>
+                    <a href="/blog-app/auth/signup">Register</a></span> {/* Change text color to white */}
+                {/* </NavLink> */}
               </NavItem>
               <NavItem>
                 <NavLink
