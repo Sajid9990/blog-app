@@ -27,7 +27,7 @@ const Error400 = () => {
     };
 
     useEffect(() => {
-        moveIcon();
+        // moveIcon();
     }, []);
     return (
         <React.Fragment>
