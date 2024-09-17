@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Carousel, CarouselItem, CarouselIndicators, Button } from 'reactstrap';
-import "./trending.css";
+import "./trending.css"; 
 const TrendingNews = () => {
     const trendingItems = [
         {
