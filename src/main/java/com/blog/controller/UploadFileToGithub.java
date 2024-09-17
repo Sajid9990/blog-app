@@ -16,10 +16,7 @@ import java.util.Base64;
 @RestController
 @RequestMapping(path = {"/api/public"})
 public class UploadFileToGithub {
-    private static final String REPO_OWNER = "sajid9990";
-    private static final String REPO_NAME = "blog-app";
-    private static final String BRANCH = "main";
-    private static final String TOKEN = "";
+
 
     @GetMapping(path = {"/upload/to/github"})
     public ResponseEntity uploadToGithub() throws IOException {
