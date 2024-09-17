@@ -19,7 +19,6 @@ public class UploadFileToGithub {
     private static final String REPO_OWNER = "sajid9990";
     private static final String REPO_NAME = "blog-app";
     private static final String BRANCH = "main";
-    private static final String TOKEN = "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";
 
     @GetMapping(path = {"/upload/to/github"})
     public ResponseEntity uploadToGithub() throws IOException {
@@ -46,7 +45,6 @@ public class UploadFileToGithub {
                 jsonBody.toString()
         );
 
-        String url = String.format("https://api.github.com/repos/%s/%s/contents/%s", REPO_OWNER, REPO_NAME, fileNameAndDir);
 
         Request request = new Request.Builder()
                 .url(url)
