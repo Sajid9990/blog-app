@@ -19,7 +19,7 @@ public class UploadFileToGithub {
     private static final String REPO_OWNER = "sajid9990";
     private static final String REPO_NAME = "blog-app";
     private static final String BRANCH = "main";
-    private static final String TOKEN = "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";
+    private static final String TOKEN = "";
 
     @GetMapping(path = {"/upload/to/github"})
     public ResponseEntity uploadToGithub() throws IOException {
