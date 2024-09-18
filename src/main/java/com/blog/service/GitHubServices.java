@@ -1,11 +1,8 @@
-package com.blog.controller;
+package com.blog.service;
 
 import com.google.gson.JsonObject;
 import okhttp3.*;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,23 +10,18 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Base64;
 
-@RestController
-@RequestMapping(path = {"/api/public"})
-public class UploadFileToGithub {
+@Service
+public class GitHubServices {
     private static final String REPO_OWNER = "sajid9990";
     private static final String REPO_NAME = "blog-app";
     private static final String BRANCH = "main";
-    private static final String TOKEN = "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";
+    private static final String TOKEN = "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";
+    private static final String GITHUB_BASE_URL = "https://api.github.com/repos/%s/%s/contents/%s";
 
-    @GetMapping(path = {"/upload/to/github"})
-    public ResponseEntity uploadToGithub() throws IOException {
-        String filePath = "D:\\abc.txt";
-        String dirPath = "public/assets/";
-        String fileNameAndDir = dirPath + "abc_updated.txt";
-        String commitMessage = "Just Adding Files On Github Repository";
 
+    public boolean uploadFileToGitHubRepo(String sourceFilePath, String destinationFilePath, String commitMessage) throws IOException {
         // Read file and encode to Base64
-        Path path = Paths.get(filePath);
+        Path path = Paths.get(sourceFilePath);
         byte[] fileBytes = Files.readAllBytes(path);
         String fileContent = Base64.getEncoder().encodeToString(fileBytes);
 
@@ -41,12 +33,10 @@ public class UploadFileToGithub {
 
         // Prepare the HTTP request
         OkHttpClient client = new OkHttpClient();
-        RequestBody body = RequestBody.create(
-                MediaType.parse("application/json; charset=utf-8"),
-                jsonBody.toString()
-        );
+        RequestBody body = RequestBody.create(jsonBody.toString(), MediaType.parse("application/json; charset=utf-8"));
 
-        String url = String.format("https://api.github.com/repos/%s/%s/contents/%s", REPO_OWNER, REPO_NAME, fileNameAndDir);
+        // format the url where data is stored
+        String url = String.format(GITHUB_BASE_URL, REPO_OWNER, REPO_NAME, destinationFilePath);
 
         Request request = new Request.Builder()
                 .url(url)
@@ -57,12 +47,12 @@ public class UploadFileToGithub {
         // Execute the request
         try (Response response = client.newCall(request).execute()) {
             if (!response.isSuccessful()) {
-                throw new IOException("Unexpected code " + response);
+//                throw new IOException("Unexpected code " + response);
+                System.out.println("unexpected code " + response);
+                return false;
             }
             System.out.println("File uploaded successfully: " + response.body().string());
+            return true;
         }
-
-
-        return null;
     }
 }

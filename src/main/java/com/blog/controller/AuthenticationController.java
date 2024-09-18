@@ -6,6 +6,7 @@ import com.blog.model.LoginRequest;
 import com.blog.security.model.JwtResponse;
 import com.blog.service.AuthenticationService;
 import com.blog.security.utils.JwtUtil;
+import com.blog.utils.Status;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,10 +48,10 @@ public class AuthenticationController {
             try {
                 // save user details into db
                 UserSignup isRegister = authenticationService.registerUser(signup);
-                return ResponseEntity.ok(new ResponseWith("Success", signup));
+                return ResponseEntity.ok(new ResponseWith(Status.SUCCESS, signup));
             } catch (Exception e) {
                 logger.error("user not register ", HttpStatus.INTERNAL_SERVER_ERROR);
-                return ResponseEntity.ok(new ResponseWith("Failed", null));
+                return ResponseEntity.ok(new ResponseWith(Status.FAILED, null));
             }
 
             // if return true then data save into db
@@ -83,7 +84,7 @@ public class AuthenticationController {
         }
 
         if (token != null || token.equals("")) {
-            loginUserDetails=authenticationService.getLoginUserDetails(loginRequest.getUserName());
+            loginUserDetails = authenticationService.getLoginUserDetails(loginRequest.getUserName());
             return ResponseEntity.ok(new JwtResponse(loginUserDetails, authenticationType, "Success", jwtUtil.extractExpiration(token), token));
 
         }
