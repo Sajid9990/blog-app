@@ -15,8 +15,9 @@ import javax.persistence.*;
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
-    String title;
-    String description;
-    String body;
+    private int id;
+    private String title;
+    private String description;
+    private String body;
+
 }
