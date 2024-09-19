@@ -13,15 +13,15 @@ import java.util.Base64;
 
 @Service
 public class GitHubServices {
-//    @Value("${github.owner.name}")
+    @Value("${github.owner.name}")
     private String REPO_OWNER;
-//    @Value("${github.repository.name}")
+    @Value("${github.repository.name}")
     private String REPO_NAME;
-//    @Value("${github.branch}")
+    @Value("${github.branch}")
     private String BRANCH;
-//    @Value("${github.token}")
+    @Value("${github.token}")
     private String TOKEN;
-//    @Value("${github.base.url}")
+    @Value("${github.base.url}")
     private String GITHUB_BASE_URL;
 
 
