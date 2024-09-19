@@ -86,7 +86,7 @@ const CommonNavbar = () => {
               </svg>
             </button>
           </div>
-          <Collapse isOpen={isOpen} style={{background:"#439C8B"}} navbar>
+          <Collapse isOpen={isOpen} style={{ background: "#439C8B" }} navbar>
             <div className="navbar-collapse-header d-md-none">
               <Row>
                 <Col className="collapse-brand" xs="6">
@@ -122,18 +122,6 @@ const CommonNavbar = () => {
                       >
                         <i className="ni ni-planet" style={{ color: "white" }} /> {/* Change icon color to white */}
                         <span className="nav-link-inner--text" style={{ color: "white" }}>Dashboard</span> {/* Change text color to white */}
-                      </NavLink>
-                    </NavItem>
-                    <NavItem>
-                      <NavLink
-                        className="nav-link-icon"
-                        to="/admin/user-profile"
-                        tag={Link}
-                        onClick={() => setIsOpen(false)}
-                        style={{ color: "white" }} // Change text color to white
-                      >
-                        <i className="ni ni-single-02" style={{ color: "white" }} /> {/* Change icon color to white */}
-                        <span className="nav-link-inner--text" style={{ color: "white" }}>Profile</span> {/* Change text color to white */}
                       </NavLink>
                     </NavItem>
                   </>
