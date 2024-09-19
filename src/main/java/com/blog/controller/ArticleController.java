@@ -42,7 +42,7 @@ public class ArticleController {
 
         fileManipulationService.createJsonFile("myJson_1", "assets/files/", s);
 
-//        boolean isUploaded = gitHubServices.uploadFileToGitHubRepo(filePath, destinationPath,"Uploaded filed into repo");
+        boolean isUploaded = gitHubServices.uploadFileToGitHubRepo("assets/files/myJson_1.json", "public/assets/myJson_1_e.json","Uploaded filed into repo");
 
         return null;
     }

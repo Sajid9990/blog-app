@@ -2,6 +2,7 @@ package com.blog.service;
 
 import com.google.gson.JsonObject;
 import okhttp3.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -12,11 +13,16 @@ import java.util.Base64;
 
 @Service
 public class GitHubServices {
-    private static final String REPO_OWNER = "sajid9990";
-    private static final String REPO_NAME = "blog-app";
-    private static final String BRANCH = "main";
-    private static final String TOKEN = "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";
-    private static final String GITHUB_BASE_URL = "https://api.github.com/repos/%s/%s/contents/%s";
+    @Value("${github.owner.name}")
+    private String REPO_OWNER;
+    @Value("${github.repository.name}")
+    private String REPO_NAME;
+    @Value("${github.branch}")
+    private String BRANCH;
+    @Value("${github.token}")
+    private String TOKEN;
+    @Value("${github.base.url}")
+    private String GITHUB_BASE_URL;
 
 
     public boolean uploadFileToGitHubRepo(String sourceFilePath, String destinationFilePath, String commitMessage) throws IOException {
