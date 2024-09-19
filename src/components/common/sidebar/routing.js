@@ -1,6 +1,6 @@
-import Dashboard from "./layout/admin/admin-pages/dashboard";
-import Icons from "./layout/admin/admin-pages/Icons";
-import Profile from "./layout/admin/admin-pages/Profile";
+import Dashboard from "../../layout/admin/admin-pages/dashboard";
+import Icons from "../../layout/admin/admin-pages/Icons";
+import Profile from "../../layout/admin/admin-pages/Profile";
 
 var routes = [
     {
