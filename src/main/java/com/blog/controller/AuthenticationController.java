@@ -80,15 +80,15 @@ public class AuthenticationController {
             }
         } catch (Exception e) {
             logger.error("AuthenticationController : " + e.getMessage(), HttpStatus.FORBIDDEN);
-            return ResponseEntity.ok(new JwtResponse("Failed"));
+            return ResponseEntity.ok(new JwtResponse(Status.FAILED));
         }
 
         if (token != null || token.equals("")) {
             loginUserDetails = authenticationService.getLoginUserDetails(loginRequest.getUserName());
-            return ResponseEntity.ok(new JwtResponse(loginUserDetails, authenticationType, "Success", jwtUtil.extractExpiration(token), token));
+            return ResponseEntity.ok(new JwtResponse(loginUserDetails, authenticationType, Status.SUCCESS, jwtUtil.extractExpiration(token), token));
 
         }
-        return new ResponseEntity(new JwtResponse(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity(new JwtResponse(Status.FAILED), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @GetMapping("/public/test")

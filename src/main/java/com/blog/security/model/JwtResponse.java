@@ -1,6 +1,7 @@
 package com.blog.security.model;
 
 import com.blog.model.UserSignup;
+import com.blog.utils.Status;
 import lombok.*;
 
 import java.util.Date;
@@ -17,7 +18,7 @@ public class JwtResponse {
     private String authType;
 
     @Getter@Setter
-    private String status;
+    private Status status;
 
     @Getter@Setter
     private Date tokenExprDate;
@@ -25,7 +26,7 @@ public class JwtResponse {
     @Getter@Setter
     private String token;
 
-    public JwtResponse(String status) {
+    public JwtResponse(Status status) {
         this.status = status;
     }
 }
