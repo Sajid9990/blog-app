@@ -1,8 +1,9 @@
 package com.blog.service;
 
+import com.blog.utils.ApplicationProp;
 import com.google.gson.JsonObject;
 import okhttp3.*;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -10,23 +11,17 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Base64;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class GitHubServices {
-    @Value("${github.owner.name}")
-    private String REPO_OWNER;
-    @Value("${github.repository.name}")
-    private String REPO_NAME;
-    @Value("${github.branch}")
-    private String BRANCH;
-    @Value("${github.token}")
-    private String TOKEN;
-    @Value("${github.base.url}")
-    private String GITHUB_BASE_URL;
+
+    @Autowired
+    ApplicationProp applicationProp;
 
     private String gitTokenExtractor(String tokenWithKey) {
+        // remove key from token
         String token = tokenWithKey.split("mygittoken_")[1];
-        System.out.println("tokenWithKey = " + token);
         return token;
     }
 
@@ -41,25 +36,28 @@ public class GitHubServices {
         JsonObject jsonBody = new JsonObject();
         jsonBody.addProperty("message", commitMessage);
         jsonBody.addProperty("content", fileContent);
-        jsonBody.addProperty("branch", BRANCH);
+        jsonBody.addProperty("branch", applicationProp.BRANCH);
 
         // Prepare the HTTP request
-        OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(30, TimeUnit.SECONDS) // Set connection timeout
+                .readTimeout(30, TimeUnit.SECONDS)    // Set read timeout
+                .build();
+
         RequestBody body = RequestBody.create(jsonBody.toString(), MediaType.parse("application/json; charset=utf-8"));
 
         // format the url where data is stored
-        String url = String.format(GITHUB_BASE_URL, REPO_OWNER, REPO_NAME, destinationFilePath);
+        String url = String.format(applicationProp.GITHUB_BASE_URL, applicationProp.REPO_OWNER, applicationProp.REPO_NAME, destinationFilePath);
 
         Request request = new Request.Builder()
                 .url(url)
-                .header("Authorization", "token " + this.gitTokenExtractor(TOKEN))
+                .header("Authorization", "token " + this.gitTokenExtractor(applicationProp.TOKEN))
                 .put(body)
                 .build();
 
         // Execute the request
         try (Response response = client.newCall(request).execute()) {
             if (!response.isSuccessful()) {
-//                throw new IOException("Unexpected code " + response);
                 System.out.println("unexpected code " + response);
                 return false;
             }

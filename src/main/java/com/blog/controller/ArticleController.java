@@ -40,9 +40,9 @@ public class ArticleController {
 
         String s = objectMapper.writeValueAsString(article);
 
-        fileManipulationService.createJsonFile("myJson_1", "assets/files/", s);
+//        fileManipulationService.createJsonFile("myJson_1_30_09_24", "assets/files/", s);
 
-        boolean isUploaded = gitHubServices.uploadFileToGitHubRepo("assets/files/myJson_1.json", "public/assets/myJson_1_e.json","Uploaded filed into repo");
+        boolean isUploaded = gitHubServices.uploadFileToGitHubRepo("assets/files/myJson_1_30_09_24.json", "public/assets/myJson_1_30_09_24.json","Uploaded filed into repo");
 
         return null;
     }
