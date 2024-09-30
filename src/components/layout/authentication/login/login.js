@@ -15,7 +15,7 @@ const LoginPage = () => {
     if (response.data.status == "SUCCESS") {
       let data = response.data;
       localStorage.setItem("token", data.token)
-      alert("login success");
+      // alert("login success");
       window.location.reload(true)
     } else {
       alert("invalid credential !!!!")
