@@ -24,6 +24,12 @@ public class GitHubServices {
     @Value("${github.base.url}")
     private String GITHUB_BASE_URL;
 
+    private String gitTokenExtractor(String tokenWithKey) {
+        String token = tokenWithKey.split("mygittoken_")[1];
+        System.out.println("tokenWithKey = " + token);
+        return token;
+    }
+
 
     public boolean uploadFileToGitHubRepo(String sourceFilePath, String destinationFilePath, String commitMessage) throws IOException {
         // Read file and encode to Base64
@@ -46,7 +52,7 @@ public class GitHubServices {
 
         Request request = new Request.Builder()
                 .url(url)
-                .header("Authorization", "token " + TOKEN)
+                .header("Authorization", "token " + this.gitTokenExtractor(TOKEN))
                 .put(body)
                 .build();
 
