@@ -4,7 +4,7 @@ import Sidebar from "../../common/sidebar/Sidebar.js";
 import Footer from "../../common/footer/AdminFooter.js";
 import { Container } from "reactstrap";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import routes from "../../routing.js";
+import routes from "../../common/sidebar/routing.js";
 
 const Admin = (props) => {
   const mainContent = React.useRef(null);
