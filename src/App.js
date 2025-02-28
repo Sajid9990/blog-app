@@ -6,12 +6,13 @@ import Error400 from './components/errors/404_Error';
 import LoginPage from './components/layout/authentication/login/login.js';
 import SignupPage from './components/layout/authentication/signup/signupPage';
 import BlogPage from './components/layout/blog/blog';
+import SingUpWithGoogle from './components/layout/authentication/signup/withGoogle.js';
 
 function App() {
   let token = localStorage.getItem("token");
   return (
     // <BrowserRouter basename='/blog-app'>
-    <HashRouter>
+   <HashRouter>
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/admin/*" element={token ? <Admin /> : <LoginPage />} />
@@ -19,11 +20,11 @@ function App() {
         <Route path="/auth/signup" element={<SignupPage />} />
         <Route path="/public/blog" element={<BlogPage />} />
         <Route path="/public/blog" element={<BlogPage />} />
-        <Route path="/public/auth/code" element={<BlogPage />} />
+        <Route path="/public/auth/code" element={<SingUpWithGoogle />} />
         {/* <Route path="*" element={<Error400 />} /> */}
       </Routes>
-    </HashRouter>
-    // </BrowserRouter>
+     </HashRouter>
+     {/* </BrowserRouter> */}
   );
 }
 

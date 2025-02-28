@@ -1,8 +1,14 @@
 import React, { Fragment, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useParams, useSearchParams } from 'react-router-dom';
 
 const SingUpWithGoogle = () => {
     const [searchParams] = useSearchParams();
+    const location = useLocation();
+  const searchParams1 = new URLSearchParams(location.search);
+   const a = [...searchParams1.entries()];
+    debugger
+    console.log(searchParams);
+    
     // const name = searchParams.get("name") || "Guest";
     // const age = searchParams.get("age") || "Unknown";
     return (
@@ -12,4 +18,4 @@ const SingUpWithGoogle = () => {
     )
 }
 
-export default App;
+export default SingUpWithGoogle;

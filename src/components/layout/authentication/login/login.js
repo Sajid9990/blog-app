@@ -35,7 +35,7 @@ const LoginPage = () => {
 
   const requestAuthCode = () => {
     const CLIENT_ID = "533677761589-j3f0at18mkv5mvt5cr4tl7ks8m49ijpd.apps.googleusercontent.com";
-    const REDIRECT_URI = "https://developers.google.com/oauthplayground";
+    const REDIRECT_URI = "http://127.0.0.1:3000/blog-app/public/auth/code";
     const AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth";
     const SCOPE = "openid email profile";  // Adjust as needed
 
