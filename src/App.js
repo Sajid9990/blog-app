@@ -18,6 +18,8 @@ function App() {
         <Route path="/auth/login" element={<LoginPage />} />
         <Route path="/auth/signup" element={<SignupPage />} />
         <Route path="/public/blog" element={<BlogPage />} />
+        <Route path="/public/blog" element={<BlogPage />} />
+        <Route path="/public/auth/code" element={<BlogPage />} />
         {/* <Route path="*" element={<Error400 />} /> */}
       </Routes>
     </HashRouter>

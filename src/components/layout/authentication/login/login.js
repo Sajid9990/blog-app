@@ -68,7 +68,7 @@ const LoginPage = () => {
         </form>
       </div>
       <div>
-        <Button onClick={requestAuthCode}>Login With</Button>
+        <Button className='btn btn-success' onClick={requestAuthCode}>Login With</Button>
       </div>
     </div>
   );
