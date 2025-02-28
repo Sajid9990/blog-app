@@ -107,8 +107,7 @@ const TrendingNews = () => {
         <CarouselItem
             onExiting={() => setAnimating(true)}
             onExited={() => setAnimating(false)}
-            key={index}
-        >
+            key={index}>
             <div className="trending-post">
                 <div className="single-post-wrap style-overlay" style={{ width: '100%', height: '500px', overflow: 'hidden' }}>
                     <div className="thumb" style={{ width: '100%', height: '100%' }}>

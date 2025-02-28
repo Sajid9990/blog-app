@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './login.css';
 
 import httpService from '../../../Http/http.service';
+import { Button } from 'reactstrap';
 
 const LoginPage = () => {
   const [dataForm, setDataForm] = useState({
@@ -30,6 +31,26 @@ const LoginPage = () => {
     })
   }
 
+
+
+  const requestAuthCode = () => {
+    const CLIENT_ID = "533677761589-j3f0at18mkv5mvt5cr4tl7ks8m49ijpd.apps.googleusercontent.com";
+    const REDIRECT_URI = "https://developers.google.com/oauthplayground";
+    const AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth";
+    const SCOPE = "openid email profile";  // Adjust as needed
+
+    const params = new URLSearchParams({
+      client_id: CLIENT_ID,
+      redirect_uri: REDIRECT_URI,
+      response_type: "code",
+      scope: SCOPE,
+      access_type: "offline", // Use "offline" if you need a refresh token
+      state: "random_string", // Optional, for security
+    });
+    window.location.href = `${AUTH_URL}?${params.toString()}`;
+
+  }
+
   return (
     <div className={`login-container show`}>
       <div className="login-form">
@@ -45,6 +66,9 @@ const LoginPage = () => {
           </div>
           <button type="submit">Login</button>
         </form>
+      </div>
+      <div>
+        <Button onClick={requestAuthCode}>Login With</Button>
       </div>
     </div>
   );
