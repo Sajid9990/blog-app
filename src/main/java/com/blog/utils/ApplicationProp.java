@@ -23,4 +23,11 @@ public class ApplicationProp {
     public String TOKEN;
     @Value("${github.base.url}")
     public String GITHUB_BASE_URL;
+
+    // Upload Properties
+    @Value("${blog.upload.on.github}")
+    public String IS_UPLOAD_ON_GITHUB;
+    @Value("${blog.write.files}")
+    public String IS_WRITE_FILES;
 }
+

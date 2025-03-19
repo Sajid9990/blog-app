@@ -17,7 +17,9 @@ public class Article {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
+    private String category;
     private String description;
-    private String body;
-
+    private String content;
+    private String featureImg;
+    private String iconImg;
 }

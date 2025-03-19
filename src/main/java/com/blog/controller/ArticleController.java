@@ -34,7 +34,7 @@ public class ArticleController {
         article.setId(1);
         article.setTitle("Just Checking");
         article.setDescription("Just Checking Description");
-        article.setBody("Just Checking body");
+        article.setContent("Just Checking body");
 
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -93,4 +93,7 @@ public class ArticleController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseWith(Status.FAILED));
     }
 
+
 }
+
+
