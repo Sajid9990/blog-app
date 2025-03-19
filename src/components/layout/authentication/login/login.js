@@ -3,6 +3,7 @@ import './login.css';
 
 import httpService from '../../../Http/http.service';
 import { Button } from 'reactstrap';
+import axios from 'axios';
 
 const LoginPage = () => {
   const [dataForm, setDataForm] = useState({
@@ -17,7 +18,7 @@ const LoginPage = () => {
       let data = response.data;
       localStorage.setItem("token", data.token)
       // alert("login success");
-      window.location.reload(true)
+      window.location.reload()
     } else {
       alert("invalid credential !!!!")
     }
@@ -47,6 +48,9 @@ const LoginPage = () => {
       access_type: "offline", // Use "offline" if you need a refresh token
       state: "random_string", // Optional, for security
     });
+    const uri = `${AUTH_URL}?${params.toString()}`;
+    console.log(uri);
+
     window.location.href = `${AUTH_URL}?${params.toString()}`;
 
   }

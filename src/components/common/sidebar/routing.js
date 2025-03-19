@@ -1,21 +1,23 @@
 import Article from "../../layout/admin/admin-pages/article/article";
+import ArticleList from "../../layout/admin/admin-pages/article/articleList";
 import Dashboard from "../../layout/admin/admin-pages/dashboard";
 import Icons from "../../layout/admin/admin-pages/Icons";
 import Profile from "../../layout/admin/admin-pages/Profile";
 
 var routes = [
-    {
-        path: "/article",
-        name: "Add Article",
-        icon: "ni ni-book-bookmark text-green",
-        component: <Article />,
-        layout: "/admin",
-    },
+
     {
         path: "/dashboard",
         name: "Dashboard",
         icon: "ni ni-tv-2 text-primary",
         component: <Dashboard />,
+        layout: "/admin",
+    },
+    {
+        path: "/article",
+        name: "Article",
+        icon: "ni ni-book-bookmark text-green",
+        component: <ArticleList />,
         layout: "/admin",
     },
     {
@@ -32,7 +34,7 @@ var routes = [
         component: <Icons />,
         layout: "/admin",
     },
-    
+
 ];
 
 export default routes;

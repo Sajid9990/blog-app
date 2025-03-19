@@ -6,14 +6,13 @@ const SingUpWithGoogle = () => {
     const location = useLocation();
   const searchParams1 = new URLSearchParams(location.search);
    const a = [...searchParams1.entries()];
-    debugger
     console.log(searchParams);
     
     // const name = searchParams.get("name") || "Guest";
     // const age = searchParams.get("age") || "Unknown";
     return (
         <Fragment>
-          {searchParams}
+          {searchParams.get("code")||"d"}
         </Fragment>
     )
 }

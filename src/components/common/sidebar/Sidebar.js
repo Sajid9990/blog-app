@@ -71,7 +71,7 @@ const Sidebar = (props) => {
     <Navbar className="navbar-vertical fixed-left navbar-light bg-white" expand="md" id="sidenav-main" >
       <Container fluid>
         {/* Toggler */}
-        <button className="navbar-toggler" type="button" onClick={toggleCollapse}>
+        <button className="navbar-toggler" style={{width:"60px"}} type="button" onClick={toggleCollapse}>
           <span className="navbar-toggler-icon" />
         </button>
         {/* Brand */}
