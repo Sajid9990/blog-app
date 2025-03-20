@@ -1,9 +1,11 @@
-package com.blog.security.config;
+package com.blog.config;
 
+import com.blog.security.config.JwtAuthenticationFilter;
 import com.blog.security.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,6 +15,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebSecurity
@@ -30,11 +34,13 @@ public class ConfigFile extends WebSecurityConfigurerAdapter {
         // using ant matcher we are allows some urls to access
 
         http
+                .cors()
+                .and()
                 .csrf()
-                  .disable()
-                .cors().and()
+                .disable()
                 .authorizeRequests()
                 .antMatchers("/api/private/**").authenticated()
+                .antMatchers(HttpMethod.DELETE, "/api/private/**").hasRole("ADMIN")
                 .antMatchers("/api/public/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -54,15 +60,14 @@ public class ConfigFile extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         System.out.println("PasswordEncoder");
         return NoOpPasswordEncoder.getInstance();
     }
 
     @Bean
-    public AuthenticationManager authenticationManagerBean() throws Exception{
+    public AuthenticationManager authenticationManagerBean() throws Exception {
         System.out.println("AuthenticationManager");
         return super.authenticationManager();
     }
-
 }

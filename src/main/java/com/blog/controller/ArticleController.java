@@ -42,7 +42,7 @@ public class ArticleController {
 
 //        fileManipulationService.createJsonFile("myJson_1_30_09_24", "assets/files/", s);
 
-        boolean isUploaded = gitHubServices.uploadFileToGitHubRepo("assets/files/myJson_1_30_09_24.json", "public/assets/myJson_1_30_09_24.json","Uploaded filed into repo");
+        boolean isUploaded = gitHubServices.uploadFileToGitHubRepo("assets/files/myJson_1_30_09_24.json", "public/assets/myJson_1_30_09_24.json", "Uploaded filed into repo");
 
         return null;
     }
@@ -87,6 +87,18 @@ public class ArticleController {
             Article article = articleService.getArticleById(articleId);
             if (article != null) {
                 return ResponseEntity.status(HttpStatus.OK).body(new ResponseWith(Status.SUCCESS, article));
+            }
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(new ResponseWith(Status.FAILED, "Article not found"));
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseWith(Status.FAILED));
+    }
+
+    @DeleteMapping(path = "{/private/article/{id}}")
+    public ResponseEntity<?> deleteArticleById(@PathVariable(name = "id") int articleId) {
+        if (articleId > 0) {
+            boolean isDeleted = articleService.deleteArticleById(articleId);
+            if (isDeleted) {
+                return ResponseEntity.status(HttpStatus.OK).body(new ResponseWith(Status.SUCCESS));
             }
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(new ResponseWith(Status.FAILED, "Article not found"));
         }

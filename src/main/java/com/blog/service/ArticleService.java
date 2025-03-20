@@ -61,5 +61,16 @@ public class ArticleService {
         return null;
     }
 
+    public boolean deleteArticleById(int articleId) {
+        if (articleId > 0) {
+            try {
+                articleRepo.deleteById(articleId);
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
 
 }
