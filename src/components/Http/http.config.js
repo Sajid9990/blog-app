@@ -5,8 +5,9 @@ class httpConfig {
         this.request = axios.create({
             baseURL: "http://localhost:8080/api",
             headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                // "Access-Control-Allow-Origin": "*" // this not send with headers beacuse server auto implement this header
                 // Do NOT set `Authorization` here, use an interceptor
             }
         });

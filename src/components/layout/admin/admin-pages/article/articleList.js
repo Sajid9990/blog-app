@@ -1,8 +1,8 @@
 
 import { Fragment, useState } from "react";
-import { Container, FormGroup, Input, Form, Row, Col, Card, CardBody, CardHeader, Button, Table } from "reactstrap";
+import { Container, Row, Col, Card, CardBody, CardHeader, Button, Table } from "reactstrap";
 import httpService from "../../../../Http/http.service";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ArticleList = () => {
   // INITLIAZATION
@@ -11,12 +11,30 @@ const ArticleList = () => {
   // STATES
   const [articleList, setArticleList] = useState();
 
+  // HOOKS
+  const navigate = useNavigate();
+
   const getArticles = async () => {
     debugger
     const result = await httpService.getAll("/private/articles");
     console.log(result);
     if (result.data.status == "SUCCESS") {
       setArticleList(result.data.object);
+    }
+  }
+
+  const editArticle = (articleObj) => {
+    navigate("/admin/article/create-update", { state: { articleObj } });
+  }
+
+  const deleteArticle = async (articleObj) => {
+    debugger
+    if (window.confirm(`Are you sure you want to delete article '${articleObj.title}' ?`)) {
+      let result = await httpService.deleteById(`/private/article`, articleObj.id);
+      if (result.data.status === "SUCCESS") {
+        alert(`Article '${articleObj.title}' deleted successfully.`);
+        getArticles();// refetch the list
+      }
     }
   }
 
@@ -37,11 +55,11 @@ const ArticleList = () => {
                       <h3 className="mb-0">Article Listing</h3>
                     </Col>
                     <Col className="text-right" xs="4">
-                      <Link size="md" className="btn btn-info w-50" to={"/admin/article/add"}>Add Article</Link>
+                      <Link className="btn btn-info" to={"/admin/article/create-update"}>Add Article</Link>
                     </Col>
                   </Row>
                 </CardHeader>
-                <CardBody>
+                <CardBody style={{ overflow: "auto" }}>
                   <Table hover>
                     <thead>
                       <tr>
@@ -58,19 +76,22 @@ const ArticleList = () => {
                     <tbody>
                       {
                         articleList ?
-                          articleList.map((data, index) => {
+                          articleList.map((article, index) => {
                             return (
                               <Fragment key={index}>
                                 <tr>
-                                  <th scope="row"> 1 </th>
-                                  <td> {data.title} </td>
-                                  <td> {data.category} </td>
-                                  <td> {data.description} </td>
-                                  <td> {data.content} </td>
-                                  <td> {data.featureImg} </td>
-                                  <td> {data.iconImg} </td>
-                                  <td> <Button size="sm" className="btn btn-success">Edit</Button> </td>
-                                  <td> <Button size="sm" className="btn btn-danger">Delete</Button> </td>
+                                  <th scope="row">{article.id}</th>
+                                  <td> {article.title} </td>
+                                  <td> {article.category} </td>
+                                  <td> {article.description} </td>
+                                  <td> {article.featureImg} </td>
+                                  <td> {article.iconImg} </td>
+                                  <td>
+                                    <Button size="sm" onClick={() => editArticle(article)} className="btn btn-success">Edit</Button>
+                                  </td>
+                                  <td>
+                                    <Button size="sm" onClick={() => deleteArticle(article)} className="btn btn-danger">Delete</Button>
+                                  </td>
                                 </tr>
                               </Fragment>
                             );

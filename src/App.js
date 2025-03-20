@@ -22,7 +22,7 @@ function App() {
         <Route path="/auth/signup" element={<SignupPage />} />
         <Route path="/public/blog" element={<BlogPage />} />
         <Route path="/public/auth/code" element={<SingUpWithGoogle />} />
-        <Route path="/admin/article/add" element={<Article />} />
+        <Route path="/admin/article/create-update" element={<Article />} />
         {/* <Route path="*" element={<Error400 />} /> */}
       </Routes>
       {/* </HashRouter> */}
