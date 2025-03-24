@@ -19,6 +19,7 @@ public class Article {
     private String title;
     private String category;
     private String description;
+    @Column(name = "content",columnDefinition = "Text")
     private String content;
     private String featureImg;
     private String iconImg;

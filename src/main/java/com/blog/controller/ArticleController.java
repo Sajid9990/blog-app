@@ -28,23 +28,13 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
-    @GetMapping(path = {"/public/github/upload"})
-    public ResponseEntity createArticle2() throws IOException {
-        Article article = new Article();
-        article.setId(1);
-        article.setTitle("Just Checking");
-        article.setDescription("Just Checking Description");
-        article.setContent("Just Checking body");
-
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        String s = objectMapper.writeValueAsString(article);
-
-//        fileManipulationService.createJsonFile("myJson_1_30_09_24", "assets/files/", s);
-
-        boolean isUploaded = gitHubServices.uploadFileToGitHubRepo("assets/files/myJson_1_30_09_24.json", "public/assets/myJson_1_30_09_24.json", "Uploaded filed into repo");
-
-        return null;
+    @GetMapping(path = {"/public/github/upload/all/articles"})
+    public ResponseEntity uploadArticleOnGithub() throws IOException {
+        boolean isUploaded = gitHubServices.uploadArticleOnGithub();
+        if (isUploaded) {
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseWith(Status.SUCCESS));
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseWith(Status.FAILED));
     }
 
     @PostMapping(path = {"/private/article"})
@@ -52,6 +42,7 @@ public class ArticleController {
         if (article != null) {
             Article savedArticle = articleService.createArticle(article);
             if (savedArticle.getId() > 0) {
+                gitHubServices.upload(savedArticle);
                 return ResponseEntity.status(HttpStatus.OK).body(new ResponseWith(Status.SUCCESS, savedArticle));
             }
         }
@@ -65,6 +56,8 @@ public class ArticleController {
             if (article != null) {
                 Article updatedArticle = articleService.updateArticleById(articleId, article);
                 if (updatedArticle != null) {
+                    // update the article on github repo
+                    gitHubServices.upload(updatedArticle);
                     return ResponseEntity.status(HttpStatus.OK).body(new ResponseWith(Status.SUCCESS, updatedArticle));
                 }
             }

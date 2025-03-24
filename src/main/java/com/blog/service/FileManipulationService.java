@@ -39,7 +39,7 @@ public class FileManipulationService {
         Status res = createDirectories(path);
         if (res.getName().equals(Status.SUCCESS.getName()) || res.getName().equals(Status.EXISTS.getName())) {
             // Write the object to a JSON file
-            objectMapper.writeValue(new File(path + fileName + ".json"), jsonData);
+            objectMapper.writeValue(new File(path + fileName), jsonData);
             LOGGER.info("JSON file created successfully!");
             return Status.SUCCESS;
         }
