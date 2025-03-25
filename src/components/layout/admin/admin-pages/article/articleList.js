@@ -1,6 +1,6 @@
 
 import { Fragment, useState } from "react";
-import { Container, Row, Col, Card, CardBody, CardHeader, Button, Table } from "reactstrap";
+import { Container, Row, Col, Card, CardBody, CardHeader, Button, Table, CardTitle } from "reactstrap";
 import httpService from "../../../../Http/http.service";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -16,7 +16,7 @@ const ArticleList = () => {
 
   const getArticles = async () => {
     debugger
-    const result = await httpService.getAll("/private/articles");
+    const result = await httpService.getAll("/private/articles", true);
     console.log(result);
     if (result.data.status == "SUCCESS") {
       setArticleList(result.data.object);
@@ -30,7 +30,7 @@ const ArticleList = () => {
   const deleteArticle = async (articleObj) => {
     debugger
     if (window.confirm(`Are you sure you want to delete article '${articleObj.title}' ?`)) {
-      let result = await httpService.deleteById(`/private/article`, articleObj.id);
+      let result = await httpService.deleteById(`/private/article`, articleObj.id, true);
       if (result.data.status === "SUCCESS") {
         alert(`Article '${articleObj.title}' deleted successfully.`);
         getArticles();// refetch the list
@@ -44,7 +44,36 @@ const ArticleList = () => {
 
   return (
     <Fragment>
-      <div className="header bg-gradient-success pb-8 pt-5 pt-md-8 ">
+      <div className="header bg-gradient-success pb-8 pt-5 pt-md-6 ">
+        <Container className="mb-3">
+          <Row>
+            <Col lg="6" xl="3">
+              <Card className="card-stats mb-4 mb-xl-0">
+                <CardBody>
+                  <Row>
+                    <div className="col">
+                      <CardTitle
+                        tag="h5"
+                        className="text-uppercase text-muted mb-0"
+                      >
+                       Total Articles
+                      </CardTitle>
+                      <span className="h2 font-weight-bold mb-0">
+                        {articleList?.length}
+                      </span>
+                    </div>
+                    <Col className="col-auto">
+                      <div className="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                        <i className="ni ni-collection" />
+                      </div>
+                    </Col>
+                  </Row>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+
         <Container>
           <Row className="justify-content-center">
             <Col className="order-xl-1" xl="12">
@@ -55,7 +84,7 @@ const ArticleList = () => {
                       <h3 className="mb-0">Article Listing</h3>
                     </Col>
                     <Col className="text-right" xs="4">
-                      <Link className="btn btn-info" to={"/admin/article/create-update"}>Add Article</Link>
+                      <Link className="btn btn-info" to={"/admin/article/create-update"}>Create Article</Link>
                     </Col>
                   </Row>
                 </CardHeader>

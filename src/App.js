@@ -8,9 +8,14 @@ import SignupPage from './components/layout/authentication/signup/signupPage';
 import BlogPage from './components/layout/blog/blog';
 import SingUpWithGoogle from './components/layout/authentication/signup/withGoogle.js';
 import Article from './components/layout/admin/admin-pages/article/article.js';
+import { isTokenExpaire } from './common/manageSession.js';
+import Profile from './components/layout/admin/admin-pages/Profile.js';
 
 function App() {
   let token = localStorage.getItem("token");
+  if (token) {
+    isTokenExpaire(token);
+  }
   return (
     <BrowserRouter>
       {/* <BrowserRouter basename='/blog-app'> */}
@@ -22,7 +27,8 @@ function App() {
         <Route path="/auth/signup" element={<SignupPage />} />
         <Route path="/public/blog" element={<BlogPage />} />
         <Route path="/public/auth/code" element={<SingUpWithGoogle />} />
-        <Route path="/admin/article/create-update" element={<Article />} />
+        <Route path="/admin/article/create-update" element={token ? <Article /> : <LoginPage />} />
+        <Route path="/admin/user-profile" element={token ? <Profile /> : <LoginPage />} />
         {/* <Route path="*" element={<Error400 />} /> */}
       </Routes>
       {/* </HashRouter> */}

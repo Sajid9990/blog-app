@@ -19,7 +19,10 @@ const ParticleBackground = () => {
     createParticles();
   }, []);
 
-  return <div id="particles-container"></div>;
+  return <div id="particles-container">
+
+    jcnkjdnckjsndkcnsdkjcnks
+  </div>;
 };
 
 export default ParticleBackground;

@@ -2,31 +2,10 @@ import { useState } from "react";
 import { NavLink as NavLinkRRD, Link } from "react-router-dom";
 
 // reactstrap components
-import {
-  Collapse,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  DropdownToggle,
-  Form,
-  Input,
-  InputGroupAddon,
-  InputGroupText,
-  InputGroup,
-  Media,
-  NavbarBrand,
-  Navbar,
-  NavItem,
-  NavLink,
-  Nav,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
-
+import { Collapse, DropdownMenu, DropdownItem, UncontrolledDropdown, DropdownToggle, Form, Input, InputGroupAddon, InputGroupText, InputGroup, Media, NavbarBrand, Navbar, NavItem, NavLink, Nav, Container, Row, Col, } from "reactstrap";
 const Sidebar = (props) => {
   const [collapseOpen, setCollapseOpen] = useState();
- 
+
   // toggles collapse between opened and closed (true/false)
   const toggleCollapse = () => {
     setCollapseOpen((data) => !data);
@@ -37,7 +16,7 @@ const Sidebar = (props) => {
   };
   // creates the links that appear in the left menu / Sidebar
   const createLinks = (routes) => {
-       return routes.map((prop, key) => {
+    return routes.map((prop, key) => {
       return (
         <NavItem key={key}>
           <NavLink
@@ -71,7 +50,7 @@ const Sidebar = (props) => {
     <Navbar className="navbar-vertical fixed-left navbar-light bg-white" expand="md" id="sidenav-main" >
       <Container fluid>
         {/* Toggler */}
-        <button className="navbar-toggler" style={{width:"60px"}} type="button" onClick={toggleCollapse}>
+        <button className="navbar-toggler" style={{ width: "60px" }} type="button" onClick={toggleCollapse}>
           <span className="navbar-toggler-icon" />
         </button>
         {/* Brand */}
@@ -197,19 +176,13 @@ const Sidebar = (props) => {
             <NavItem>
               <NavLink href="#">
                 <i className="ni ni-spaceship" />
-                Getting started
+                About application
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="#">
                 <i className="ni ni-palette" />
-                Foundation
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="#">
-                <i className="ni ni-ui-04" />
-                Components
+                How to use application ?
               </NavLink>
             </NavItem>
           </Nav>

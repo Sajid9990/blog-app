@@ -1,16 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import {
-  Collapse,
-  NavbarBrand,
-  Navbar,
-  NavItem,
-  NavLink,
-  Nav,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
+import { Collapse, NavbarBrand, Navbar, NavItem, NavLink, Nav, Container, Row, Col, } from "reactstrap";
 
 const CommonNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -45,8 +35,7 @@ const CommonNavbar = () => {
 
   return (
     <>
-      <Navbar
-        className="navbar-top navbar-horizontal navbar-dark"
+      <Navbar className="navbar-top navbar-horizontal navbar-dark"
         style={{
           backgroundColor: "#439c8b",
           position: "fixed",
@@ -57,30 +46,15 @@ const CommonNavbar = () => {
           boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
           transition: "background-color 0.3s ease, transform 0.3s ease", // Smooth transition
           transform: isNavbarVisible ? "translateY(0)" : "translateY(-100%)", // Hide/show navbar
-        }}
-        expand="md"
-      >
+        }} expand="md">
         <Container className="px-2 d-flex align-items-center">
           <NavbarBrand to="/" tag={Link}>
             <img alt="..." src={"/blog-app/assets/logo.png"} />
           </NavbarBrand>
           <div className="ml-auto">
-            <button
-              className="navbar-toggler"
-              onClick={toggleNavbar}
-              aria-expanded={isOpen}
-              style={{ border: 'none', background: 'transparent' }} // Optional styling for button
-            >
-              <svg
-                width="30"
-                height="30"
-                // style={{ color: "white" }} // Change color to white
-                fill="currentColor"
-                className="bi bi-list"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fillRule="evenodd"
+            <button className="navbar-toggler" onClick={toggleNavbar} aria-expanded={isOpen} style={{ border: 'none', background: 'transparent' }}>
+              <svg width="30" height="30" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
+                <path fillRule="evenodd"
                   d="M2.5 12.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm0-4a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm0-4a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11z"
                 />
               </svg>

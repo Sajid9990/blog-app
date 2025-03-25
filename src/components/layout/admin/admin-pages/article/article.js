@@ -1,8 +1,9 @@
 
 import { Fragment, useEffect, useState } from "react";
-import { Container, FormGroup, Input, Form, Row, Col, Card, CardBody, CardHeader, Button } from "reactstrap";
+import { Container, FormGroup, Input, Form, Row, Col, Card, CardBody, CardHeader, Button, CardTitle } from "reactstrap";
 import httpService from "../../../../Http/http.service";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import TextEditor from "./../../../../../common/editor";
 import "./article.css";
 
 const Article = () => {
@@ -30,9 +31,9 @@ const Article = () => {
   const saveArticle = async () => {
     let result;
     if (!article?.title) {
-      result = await httpService.post(`/private/article`, article);
+      result = await httpService.post(`/private/article`, article, true);
     } else {
-      result = await httpService.put(`/private/article`, article.id, article);
+      result = await httpService.put(`/private/article`, article.id, article, true);
     }
 
     if (result.data.status === "SUCCESS") {
@@ -48,6 +49,10 @@ const Article = () => {
 
     // update only changeable information of article
     setArticle({ ...article, [name]: value });
+  }
+
+  function pushEditorValue(value) {
+    setArticle({ ...article, ["content"]: value })
   }
 
   useEffect(() => {
@@ -66,13 +71,13 @@ const Article = () => {
                 <CardHeader className="bg-white border-0">
                   <Row className="align-items-center">
                     <Col xs="8">
-                      <h3 className="mb-0">{article?.title ? `Update Article` : `Create Article`}</h3>
+                      <h3 className="mb-0">{articleObj?.title ? `Update Article` : `Create Article`}</h3>
                     </Col>
                     <Col className="text-right" xs="4">
                       {
                         article?.title ?
                           (
-                            <h3 className="mb-0">{`Article Id : ${article?.title.id}`}</h3>
+                            <h3 className="mb-0">{`${articleObj?.id}`}</h3>
                           ) :
                           <i className="ni ni-satisfied"></i>
                       }
@@ -111,7 +116,8 @@ const Article = () => {
                         <Col lg="12">
                           <FormGroup>
                             <label className="form-control-label" htmlFor="content">Content</label>
-                            <Input className="form-control-alternative" name="content" value={article?.content} onChange={onChangeHandler} style={{ height: "200px" }} id="content" placeholder="Enter content" type="textarea" />
+                            <TextEditor key={1} width={undefined} height={300} content={article?.content} pushEditorValue={pushEditorValue} isCTA={false} />
+                            {/* <Input className="form-control-alternative" name="content" value={article?.content} onChange={onChangeHandler} style={{ height: "200px" }} id="content" placeholder="Enter content" type="textarea" /> */}
                           </FormGroup>
                         </Col>
                       </Row>
@@ -140,7 +146,7 @@ const Article = () => {
                     <hr className="my-4" />
                     <Row>
                       <Col className="d-flex justify-content-start">
-                        <Link onClick={saveArticle} className="btn btn-success" >{article?.title ? `Update` : `Create`}</Link>
+                        <Link onClick={saveArticle} className="btn btn-success" >{articleObj?.title ? `Update` : `Create`}</Link>
                       </Col>
                       <Col className="d-flex justify-content-end">
                         <Link to={"/admin/article"} className="btn btn-info">Back</Link>

@@ -3,7 +3,6 @@ import './login.css';
 
 import httpService from '../../../Http/http.service';
 import { Button } from 'reactstrap';
-import axios from 'axios';
 
 const LoginPage = () => {
   const [dataForm, setDataForm] = useState({
@@ -13,10 +12,12 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let response = await httpService.post("/public/signin", dataForm);
+    let response = await httpService.post("/public/signin", dataForm, true);
     if (response.data.status == "SUCCESS") {
       let data = response.data;
       localStorage.setItem("token", data.token)
+      localStorage.setItem("username", data.user.userName)
+
       // alert("login success");
       window.location.reload()
     } else {
@@ -31,7 +32,6 @@ const LoginPage = () => {
       [target.name]: target.value
     })
   }
-
 
 
   const requestAuthCode = () => {
@@ -50,9 +50,7 @@ const LoginPage = () => {
     });
     const uri = `${AUTH_URL}?${params.toString()}`;
     console.log(uri);
-
     window.location.href = `${AUTH_URL}?${params.toString()}`;
-
   }
 
   return (
