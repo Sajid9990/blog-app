@@ -12,7 +12,7 @@ const Home = () => {
   async function callAPiTestByGithub() {
     debugger
     // const url = "https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/Sajid9990/blog-app/tree/main/public/assets/article_1.json";
-    const url = "https://raw.githubusercontent.com/Sajid9990/blog-app/tree/main/public/assets/article_1.json";
+    const url = "/assets/article_1.json";
     const res = await fetch(url, {
       method: "GET",
       headers: {
@@ -20,7 +20,7 @@ const Home = () => {
         "Content-Type": "application/json",
       },
     });
-    let abc = await res.json();
+    let abc = JSON.parse(await res.json());
     console.log(abc);
 
 
