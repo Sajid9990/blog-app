@@ -9,9 +9,10 @@ import axios from "axios";
 
 
 const Home = () => {
-
   async function callAPiTestByGithub() {
-    const url = "https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/Sajid9990/myjson_file_testing/main/test-json.json";
+    debugger
+    // const url = "https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/Sajid9990/blog-app/tree/main/public/assets/article_1.json";
+    const url = "https://raw.githubusercontent.com/Sajid9990/blog-app/tree/main/public/assets/article_1.json";
     const res = await fetch(url, {
       method: "GET",
       headers: {

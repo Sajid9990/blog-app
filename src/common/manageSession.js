@@ -2,7 +2,6 @@ import React from "react";
 import { jwtDecode } from "jwt-decode";
 
 export const isTokenExpaire = (token) => {
-    debugger
     if (token) {
         let decodedToken = jwtDecode(token);
         let currentDate = new Date();
