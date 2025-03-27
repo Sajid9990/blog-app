@@ -17,9 +17,9 @@ function App() {
     isTokenExpaire(token);
   }
   return (
-    <BrowserRouter>
-      {/* <BrowserRouter basename='/blog-app'> */}
-      {/* <HashRouter> */}
+    // <BrowserRouter>
+      <BrowserRouter basename='/blog-app'>
+      <HashRouter>
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/admin/*" element={token ? <Admin /> : <LoginPage />} />
@@ -31,7 +31,7 @@ function App() {
         <Route path="/admin/user-profile" element={token ? <Profile /> : <LoginPage />} />
         {/* <Route path="*" element={<Error400 />} /> */}
       </Routes>
-      {/* </HashRouter> */}
+      </HashRouter>
     </BrowserRouter>
   );
 }
