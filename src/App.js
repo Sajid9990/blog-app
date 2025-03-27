@@ -17,9 +17,24 @@ function App() {
     isTokenExpaire(token);
   }
   return (
-    // <BrowserRouter>
-      <BrowserRouter basename='/blog-app'>
-      <HashRouter>
+    /** Using BrowserRouter */
+    // <BrowserRouter basename='/blog-app'>
+    //   <Routes>
+    //     <Route exact path="/" element={<Home />} />
+    //     <Route path="/admin/*" element={token ? <Admin /> : <LoginPage />} />
+    //     <Route path="/auth/login" element={token ? <Admin /> : <LoginPage />} />
+    //     <Route path="/auth/signup" element={<SignupPage />} />
+    //     <Route path="/public/blog" element={<BlogPage />} />
+    //     <Route path="/public/auth/code" element={<SingUpWithGoogle />} />
+    //     <Route path="/admin/article/create-update" element={token ? <Article /> : <LoginPage />} />
+    //     <Route path="/admin/user-profile" element={token ? <Profile /> : <LoginPage />} />
+    //     {/* <Route path="*" element={<Error400 />} /> */}
+    //   </Routes>
+    // </BrowserRouter>
+
+
+    /** Using HashRouter */
+    <HashRouter>
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/admin/*" element={token ? <Admin /> : <LoginPage />} />
@@ -31,8 +46,7 @@ function App() {
         <Route path="/admin/user-profile" element={token ? <Profile /> : <LoginPage />} />
         {/* <Route path="*" element={<Error400 />} /> */}
       </Routes>
-      </HashRouter>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
