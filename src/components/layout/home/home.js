@@ -12,7 +12,6 @@ const Home = () => {
   const [data, setData] = useState();
 
   const getLatestArticle = async () => {
-    debugger
     const url = "/assets/latest_article.json";
     const res = await axios(url, {
       method: "GET",
