@@ -5,8 +5,10 @@ import com.blog.repository.ArticleRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,16 +17,25 @@ public class ArticleService {
     final static Logger LOGGER = LoggerFactory.getLogger(ArticleService.class);
 
     @Autowired
-    ArticleRepo articleRepo;
+    protected ArticleRepo articleRepo;
+
+    @Autowired
+    protected GitHubServices gitHubServices;
 
     public Article createArticle(Article article) {
         if (article != null) {
             Article savedArticle = articleRepo.save(article);
             LOGGER.info("Article Created : " + savedArticle.getId());
+            if (savedArticle != null) {
+                String fileName = "article_" + article.getId() + ".json";
+                // after save article create on GitHub
+                gitHubServices.upload(savedArticle, fileName);
+            }
             return savedArticle;
         }
         return null;
     }
+
 
     public List<Article> getArticleList() {
         try {
@@ -55,6 +66,11 @@ public class ArticleService {
                 // update the article
                 article.setId(savedArticle.get().getId());
                 Article updatedArticle = articleRepo.save(article);
+                if (updatedArticle != null) {
+                    String fileName = "article_" + article.getId() + ".json";
+                    // update the article on GitHub repo
+                    gitHubServices.upload(updatedArticle, fileName);
+                }
                 return updatedArticle;
             }
         }
@@ -72,5 +88,33 @@ public class ArticleService {
         }
         return false;
     }
+
+    public boolean uploadArticleOnGithub() {
+        try {
+            // get all articles
+            List<Article> articleList = getArticleList();
+            if (!articleList.isEmpty()) {
+                articleList.forEach(article -> {
+                    String fileName = "article_" + article.getId() + ".json";
+                    gitHubServices.upload(article, fileName);
+                });
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+
+    public boolean createLatestArticle() {
+        List<Article> articleFileName = new ArrayList<>();
+        List<Article> all = articleRepo.findAll(Sort.by(Sort.Order.desc("id")));
+        all.forEach(article -> {
+            articleFileName.add(article); // add each file name
+        });
+        gitHubServices.upload(articleFileName, "latest_article.json");
+        return true;
+    }
+
 
 }

@@ -40,7 +40,7 @@ public class ConfigFile extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/api/private/**").authenticated()
-                .antMatchers(HttpMethod.DELETE, "/api/private/**").hasRole("ADMIN")
+//                .antMatchers(HttpMethod.DELETE, "/api/private/**").hasRole("ADMIN")
                 .antMatchers("/api/public/**").permitAll()
                 .anyRequest().authenticated()
                 .and()

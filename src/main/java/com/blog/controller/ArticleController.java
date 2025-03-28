@@ -20,17 +20,11 @@ import java.util.List;
 public class ArticleController {
 
     @Autowired
-    private GitHubServices gitHubServices;
-
-    @Autowired
-    private FileManipulationService fileManipulationService;
-
-    @Autowired
     private ArticleService articleService;
 
     @GetMapping(path = {"/public/github/upload/all/articles"})
     public ResponseEntity uploadArticleOnGithub() throws IOException {
-        boolean isUploaded = gitHubServices.uploadArticleOnGithub();
+        boolean isUploaded = articleService.uploadArticleOnGithub();
         if (isUploaded) {
             return ResponseEntity.status(HttpStatus.OK).body(new ResponseWith(Status.SUCCESS));
         }
@@ -42,7 +36,6 @@ public class ArticleController {
         if (article != null) {
             Article savedArticle = articleService.createArticle(article);
             if (savedArticle.getId() > 0) {
-                gitHubServices.upload(savedArticle);
                 return ResponseEntity.status(HttpStatus.OK).body(new ResponseWith(Status.SUCCESS, savedArticle));
             }
         }
@@ -56,8 +49,6 @@ public class ArticleController {
             if (article != null) {
                 Article updatedArticle = articleService.updateArticleById(articleId, article);
                 if (updatedArticle != null) {
-                    // update the article on github repo
-                    gitHubServices.upload(updatedArticle);
                     return ResponseEntity.status(HttpStatus.OK).body(new ResponseWith(Status.SUCCESS, updatedArticle));
                 }
             }
@@ -86,7 +77,7 @@ public class ArticleController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseWith(Status.FAILED));
     }
 
-    @DeleteMapping(path = "{/private/article/{id}}")
+    @DeleteMapping(path = {"/private/article/{id}"})
     public ResponseEntity<?> deleteArticleById(@PathVariable(name = "id") int articleId) {
         if (articleId > 0) {
             boolean isDeleted = articleService.deleteArticleById(articleId);
@@ -98,6 +89,14 @@ public class ArticleController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseWith(Status.FAILED));
     }
 
+    @GetMapping(path = {"/private/latest/article"})
+    public ResponseEntity<?> generateLatestArticle() {
+        boolean isCreatedOnGithub = articleService.createLatestArticle();
+        if (isCreatedOnGithub) {
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseWith(Status.SUCCESS, "latest articles created on github"));
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseWith(Status.FAILED));
+    }
 
 }
 

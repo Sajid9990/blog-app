@@ -26,8 +26,6 @@ public class GitHubServices {
     @Autowired
     FileManipulationService fileManipulationService;
 
-    @Autowired
-    ArticleService articleService;
 
     private String gitTokenExtractor(String tokenWithKey) {
         // remove key from token
@@ -98,30 +96,13 @@ public class GitHubServices {
         }
     }
 
-    public boolean uploadArticleOnGithub() {
-        try {
-            // get all articles
-            List<Article> articleList = articleService.getArticleList();
-            if (!articleList.isEmpty()) {
-                articleList.forEach(article -> {
-                    upload(article);
-                });
-                return true;
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return false;
-    }
-
-    public void upload(Article article) {
+    public void upload(Object article, String fileName) {
         String sourcePath = "assets/files/";
         String destinationPath = "public/assets/";
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             String articleJson = objectMapper.writeValueAsString(article);
             // create file
-            String fileName = "article_" + article.getId() + ".json";
             fileManipulationService.createJsonFile(fileName, sourcePath, articleJson);
             // upload file
             boolean isUploaded = this.uploadFileToGitHubRepo(sourcePath + fileName, destinationPath + fileName, "Uploaded filed into repo");
