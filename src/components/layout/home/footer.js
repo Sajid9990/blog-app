@@ -7,48 +7,20 @@ const Footer = () => {
     <footer className="blog-footer">
       <Container>
         <Row>
-          <Col md="3" className="footer-section">
-            <h5 className="footer-title">Recent Posts</h5>
-            <ul className="recent-posts">
-              <li><a href="#">How to Master React in 2024</a></li>
-              <li><a href="#">Understanding JavaScript Closures</a></li>
-              <li><a href="#">The Ultimate Guide to CSS Grid</a></li>
-            </ul>
-          </Col>
-          <Col md="3" className="footer-section">
-            <h5 className="footer-title">Categories</h5>
-            <ul className="categories">
-              <li><a href="#">Technology</a></li>
-              <li><a href="#">Programming</a></li>
-              <li><a href="#">Web Design</a></li>
-              <li><a href="#">Tips & Tricks</a></li>
-            </ul>
-          </Col>
-          <Col md="3" className="footer-section">
-            <h5 className="footer-title">About the Author</h5>
-            <p className="author-bio">
-              Jane Doe is a software developer and writer who loves sharing insights on modern web development and programming.
+          <Col>
+            <p className="footer-bottom-text border-right pb-5 mt-3" style={{ color: "white" }}>
+              © {new Date().getFullYear()} Viral Wolf. All rights reserved.
             </p>
-            <Button color="primary" className="btn-custom">
-              Follow Jane
-            </Button>
           </Col>
-          <Col md="3" className="footer-section">
-            <h5 className="footer-title">Subscribe</h5>
+          <Col className="footer-section">
+            <h5 className="footer-title text-light">Subscribe And Never Missed New Articles</h5>
             <Form>
               <FormGroup>
-                <Label for="email">Email</Label>
-                <Input type="email" name="email" id="email" placeholder="Your email address" />
+                <Label className='text-light' for="email">Email</Label>
+                <Input className='w-auto' type="email" name="email" id="email" placeholder="Your email address" />
               </FormGroup>
-              <Button color="primary" className="btn-custom">Subscribe</Button>
+              <Button color="info" className="btn-custom w-auto text-dark">Subscribe</Button>
             </Form>
-          </Col>
-        </Row>
-        <Row className="text-center mt-4">
-          <Col>
-            <p className="footer-bottom-text">
-              © {new Date().getFullYear()} Your Blog. All rights reserved.
-            </p>
           </Col>
         </Row>
       </Container>

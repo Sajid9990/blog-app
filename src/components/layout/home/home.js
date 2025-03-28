@@ -1,42 +1,47 @@
 // reactstrap components
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import BannerArea from "./bannerArea";
 import CommonNavbar from "../../common/Navbar/commonNavbar";
 import TrendingSection from "./trendingSection";
-import PostCard from "./postCards";
 import Footer from "./footer.js";
 import axios from "axios";
+import Loader from "../../../common/Loader/loader.js";
 
 
 const Home = () => {
-  async function callAPiTestByGithub() {
+  const [data, setData] = useState();
+
+  const getLatestArticle = async () => {
     debugger
-    // const url = "https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/Sajid9990/blog-app/tree/main/public/assets/article_1.json";
-    const url = "/assets/article_1.json";
-    const res = await fetch(url, {
+    const url = "/assets/latest_article.json";
+    const res = await axios(url, {
       method: "GET",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
     });
-    let abc = JSON.parse(await res.json());
-    console.log(abc);
-
-
+    let result = JSON.parse(res.data);
+    setData(result)
   }
+
   useEffect(() => {
-    callAPiTestByGithub();
-  }, [])
+    getLatestArticle();
+  }, []);
+
 
   return (
     <React.Fragment>
-      {/* <HomeHeader /> */}
-      <CommonNavbar />
-      <TrendingSection />
-      <BannerArea />
-      <PostCard />
-      <Footer />
+      {data ? (
+        <Fragment>
+          {/* <HomeHeader /> */}
+          <CommonNavbar />
+          <TrendingSection latestArticle={data} />
+          <BannerArea latestArticle={data} />
+          <Footer />
+        </Fragment>
+      ) : <Loader />}
+
     </React.Fragment>
   );
 };

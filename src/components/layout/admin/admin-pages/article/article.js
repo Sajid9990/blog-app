@@ -5,6 +5,8 @@ import httpService from "../../../../Http/http.service";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import TextEditor from "./../../../../../common/editor";
 import "./article.css";
+import Loader from "../../../../../common/Loader/loader";
+import { invalid } from "moment";
 
 const Article = () => {
   // INITLIAZATION
@@ -20,6 +22,7 @@ const Article = () => {
 
   // STATES
   const [article, setArticle] = useState(articleInit);
+  const [loader, setLoader] = useState(false);
 
   // HOOKS
   const location = useLocation();
@@ -28,15 +31,18 @@ const Article = () => {
   // ACCESS GLOBAL DATA
   const { articleObj } = location.state || { undefined };
 
-  const saveArticle = async () => {
+  const saveArticle = async (e) => {
+    e.preventDefault();
+    debugger
+    setLoader(true);
     let result;
-    if (!article?.title) {
+    if (!articleObj?.title) {
       result = await httpService.post(`/private/article`, article, true);
     } else {
       result = await httpService.put(`/private/article`, article.id, article, true);
     }
-
     if (result.data.status === "SUCCESS") {
+      setLoader(false);
       // if update or save successfully then redireact to article list page
       setArticle(result.data.status.object);
       navigate("/admin/article");
@@ -63,6 +69,7 @@ const Article = () => {
 
   return (
     <Fragment>
+      {loader ? <Loader /> : ""}
       <div className="header bg-gradient-success pb-8 pt-5 pt-md-8 ">
         <Container>
           <Row className="justify-content-center">
@@ -85,7 +92,7 @@ const Article = () => {
                   </Row>
                 </CardHeader>
                 <CardBody>
-                  <Form>
+                  <Form onSubmit={saveArticle}>
                     <h6 className="heading-small text-muted mb-4">
                       <i className="ni ni-caps-small text-danger"></i> Text information
                     </h6>
@@ -94,13 +101,13 @@ const Article = () => {
                         <Col lg="6">
                           <FormGroup>
                             <label className="form-control-label" htmlFor="input-username">Title</label>
-                            <Input className="form-control-alternative" name="title" value={article?.title} onChange={onChangeHandler} defaultValue="" id="title" placeholder="Enter title" type="text" />
+                            <Input className="form-control-alternative" name="title" value={article?.title} onChange={onChangeHandler} defaultValue="" id="title" placeholder="Enter title" type="text" required />
                           </FormGroup>
                         </Col>
                         <Col lg="6">
                           <FormGroup>
                             <label className="form-control-label" htmlFor="category">Category</label>
-                            <Input className="form-control-alternative" name="category" value={article?.category} onChange={onChangeHandler} id="category" placeholder="Enter category" type="text" />
+                            <Input className="form-control-alternative" name="category" value={article?.category} onChange={onChangeHandler} id="category" placeholder="Enter category" type="text" required />
                           </FormGroup>
                         </Col>
                       </Row>
@@ -108,7 +115,7 @@ const Article = () => {
                         <Col lg="12">
                           <FormGroup>
                             <label className="form-control-label" htmlFor="description">Description</label>
-                            <Input className="form-control-alternative" name="description" value={article?.description} onChange={onChangeHandler} id="description" placeholder="Enter description" type="textarea" />
+                            <Input className="form-control-alternative" name="description" value={article?.description} onChange={onChangeHandler} id="description" placeholder="Enter description" type="textarea" required />
                           </FormGroup>
                         </Col>
                       </Row>
@@ -116,7 +123,7 @@ const Article = () => {
                         <Col lg="12">
                           <FormGroup>
                             <label className="form-control-label" htmlFor="content">Content</label>
-                            <TextEditor key={1} width={undefined} height={300} content={article?.content} pushEditorValue={pushEditorValue} isCTA={false} />
+                            <TextEditor key={1} width={undefined} height={300} content={article?.content} pushEditorValue={pushEditorValue} isCTA={false} required />
                             {/* <Input className="form-control-alternative" name="content" value={article?.content} onChange={onChangeHandler} style={{ height: "200px" }} id="content" placeholder="Enter content" type="textarea" /> */}
                           </FormGroup>
                         </Col>
@@ -132,13 +139,13 @@ const Article = () => {
                         <Col lg="6">
                           <FormGroup>
                             <label className="form-control-label" htmlFor="featureImg">feature Image</label>
-                            <Input className="form-control-alternative" name="featureImg" value={article?.featureImg} onChange={onChangeHandler} id="featureImg" placeholder="Enter feature image url" type="text" />
+                            <Input className="form-control-alternative" name="featureImg" value={article?.featureImg} onChange={onChangeHandler} id="featureImg" placeholder="Enter feature image url" type="text" required />
                           </FormGroup>
                         </Col>
                         <Col lg="6">
                           <FormGroup>
                             <label className="form-control-label" htmlFor="iconImg">Icon Image</label>
-                            <Input className="form-control-alternative" name="iconImg" value={article?.iconImg} onChange={onChangeHandler} id="iconImg" placeholder="Enter icon image url" type="text" />
+                            <Input className="form-control-alternative" name="iconImg" value={article?.iconImg} onChange={onChangeHandler} id="iconImg" placeholder="Enter icon image url" type="text" required />
                           </FormGroup>
                         </Col>
                       </Row>
@@ -146,7 +153,7 @@ const Article = () => {
                     <hr className="my-4" />
                     <Row>
                       <Col className="d-flex justify-content-start">
-                        <Link onClick={saveArticle} className="btn btn-success" >{articleObj?.title ? `Update` : `Create`}</Link>
+                        <Button className="btn btn-success w-25" >{articleObj?.title ? `Update` : `Create`}</Button>
                       </Col>
                       <Col className="d-flex justify-content-end">
                         <Link to={"/admin/article"} className="btn btn-info">Back</Link>

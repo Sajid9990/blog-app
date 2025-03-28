@@ -3,6 +3,7 @@ import { Fragment, useState } from "react";
 import { Container, Row, Col, Card, CardBody, CardHeader, Button, Table, CardTitle } from "reactstrap";
 import httpService from "../../../../Http/http.service";
 import { Link, useNavigate } from "react-router-dom";
+import Loader from "../../../../../common/Loader/loader";
 
 const ArticleList = () => {
   // INITLIAZATION
@@ -10,15 +11,17 @@ const ArticleList = () => {
 
   // STATES
   const [articleList, setArticleList] = useState();
+  const [loader, setLoader] = useState(false);
 
   // HOOKS
   const navigate = useNavigate();
 
   const getArticles = async () => {
-    debugger
+    setLoader(true);
     const result = await httpService.getAll("/private/articles", true);
     console.log(result);
     if (result.data.status == "SUCCESS") {
+      setLoader(false);
       setArticleList(result.data.object);
     }
   }
@@ -38,12 +41,21 @@ const ArticleList = () => {
     }
   }
 
+  const generateLatestArticle = async () => {
+    setLoader(true);
+    let result = await httpService.getAll("/private/latest/article");
+    if (result.data.status == "SUCCESS") {
+      setLoader(false);
+    }
+  }
+
   useState(() => {
     getArticles();
   }, []);
 
   return (
     <Fragment>
+      {loader ? <Loader /> : ""}
       <div className="header bg-gradient-success pb-8 pt-5 pt-md-6 ">
         <Container className="mb-3">
           <Row>
@@ -56,7 +68,7 @@ const ArticleList = () => {
                         tag="h5"
                         className="text-uppercase text-muted mb-0"
                       >
-                       Total Articles
+                        Total Articles
                       </CardTitle>
                       <span className="h2 font-weight-bold mb-0">
                         {articleList?.length}
@@ -71,7 +83,29 @@ const ArticleList = () => {
                 </CardBody>
               </Card>
             </Col>
+            <Col lg="3" xl="3">
+              <Card className="card-stats mb-4 mb-xl-0">
+                <CardBody>
+                  <Row>
+                    <div className="col">
+                      <CardTitle
+                        tag="h5"
+                        className="text-uppercase text-muted mb-0"
+                      >
+                        Latest Articles
+                      </CardTitle>
+                    </div>
+                    <Col className="col-auto">
+                      <Button onClick={generateLatestArticle} size="md" color="info">Generate</Button>
+                    </Col>
+                  </Row>
+                </CardBody>
+              </Card>
+            </Col>
           </Row>
+
+
+
         </Container>
 
         <Container>
@@ -95,9 +129,9 @@ const ArticleList = () => {
                         <th> Id </th>
                         <th> Title </th>
                         <th> Category </th>
-                        <th> Description </th>
-                        <th> Feature Image </th>
-                        <th> Icon Image </th>
+                        {/* <th> Description </th> */}
+                        {/* <th> Feature Image </th> */}
+                        {/* <th> Icon Image </th> */}
                         <th> Edit </th>
                         <th> Delete </th>
                       </tr>
@@ -112,9 +146,9 @@ const ArticleList = () => {
                                   <th scope="row">{article.id}</th>
                                   <td> {article.title} </td>
                                   <td> {article.category} </td>
-                                  <td> {article.description} </td>
-                                  <td> {article.featureImg} </td>
-                                  <td> {article.iconImg} </td>
+                                  {/* <td> {article.description} </td> */}
+                                  {/* <td> {article.featureImg} </td> */}
+                                  {/* <td> {article.iconImg} </td> */}
                                   <td>
                                     <Button size="sm" onClick={() => editArticle(article)} className="btn btn-success">Edit</Button>
                                   </td>
