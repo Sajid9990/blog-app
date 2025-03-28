@@ -25,7 +25,12 @@ const TrendingNews = (props) => {
         setActiveIndex(newIndex);
     };
 
-    const slides = latestArticle.slice(0, 3).map((item, index) => (
+    const redireactToBlogPage = (event,article) => {
+        debugger
+        alert(article.id);
+    }
+
+    const slides = latestArticle.slice(0, 3).map((article, index) => (
         <CarouselItem
             onExiting={() => setAnimating(true)}
             onExited={() => setAnimating(false)}
@@ -33,14 +38,14 @@ const TrendingNews = (props) => {
             <div className="trending-post">
                 <div className="single-post-wrap style-overlay" style={{ width: '100%', height: '500px', overflow: 'hidden' }}>
                     <div className="thumb" style={{ width: '100%', height: '100%' }}>
-                        <img src={item.iconImg} alt="img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <img src={article.iconImg} alt="img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
-                    <div onClick={() => alert("click")} className="details element" style={{ cursor: "pointer", width: "100%", position: 'absolute', bottom: '80%', paddingLeft: "10px", color: '#fff' }}>
+                    <div onClick={(e) => redireactToBlogPage(e, article)} className="details element" style={{ cursor: "pointer", width: "100%", position: 'absolute', bottom: '80%', paddingLeft: "10px", color: '#fff' }}>
                         <div className="post-meta-single">
                             <p style={{ fontSize: '14px', color: '#fff' }}>
                                 {new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: '2-digit', year: 'numeric' }).replace(',', '')}
                                 <h2 style={{ color: "white" }}>
-                                    {item.title.length > 20 ? item.title.substring(0, 20) + "..." : item.title}
+                                    {article.title.length > 20 ? article.title.substring(0, 20) + "..." : article.title}
                                 </h2>
                             </p>
                         </div>
@@ -52,6 +57,8 @@ const TrendingNews = (props) => {
             </div>
         </CarouselItem>
     ));
+
+   
 
     useEffect(() => {
         setLatestArticle(props.latestArticle);
@@ -65,7 +72,6 @@ const TrendingNews = (props) => {
                         <div>
                             <h2>Trending News</h2>
                         </div>
-
                         <Carousel activeIndex={activeIndex} next={next} previous={previous}>
                             <CarouselIndicators items={latestArticle.slice(0, 3)} activeIndex={activeIndex} onClickHandler={goToIndex} />
                             {slides}
@@ -94,12 +100,12 @@ const TrendingNews = (props) => {
 
                         <div style={{ height: '500px', overflowY: 'auto', paddingRight: '0' }}>
                             {latestArticle.slice(0, 9).map((article, index) => (
-                                <div key={index} className="single-post-list-wrap" style={{ marginBottom: '20px' }}>
+                                <div onClick={(e) => redireactToBlogPage(e, article)} key={index} className="single-post-list-wrap" style={{ marginBottom: '20px' ,cursor:"pointer"}}>
                                     <div className="media">
                                         <div className="media-left">
                                             <Card className="single-post-wrap shadow-sm" style={{ background: "none" }}>
                                                 {/* <img src={article.iconImg} alt="img" style={{ width: '100px', height: 'auto', marginRight: '15px' }} /> */}
-                                                <CardImg src={article.iconImg} alt="img" style={{ width: '100px', height: 'auto', marginRight: '15px' }}  className="card-img" />
+                                                <CardImg src={article.iconImg} alt="img" style={{ width: '100px', height: 'auto', marginRight: '15px' }} className="card-img" />
                                             </Card>
                                         </div>
                                         <div className="media-body">
