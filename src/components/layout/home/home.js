@@ -12,7 +12,7 @@ const Home = () => {
   const [data, setData] = useState();
 
   const getLatestArticle = async () => {
-    const url = "/assets/latest_article.json";
+    const url = `${process.env.PUBLIC_URL}/assets/latest_article.json`;
     const res = await axios(url, {
       method: "GET",
       headers: {
