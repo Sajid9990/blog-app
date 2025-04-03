@@ -36,11 +36,11 @@ const TrendingNews = (props) => {
             onExited={() => setAnimating(false)}
             key={index}>
             <div className="trending-post">
-                <div className="single-post-wrap style-overlay" style={{ width: '100%', height: '', overflow: 'hidden' }}>
+                <div onClick={(e) => redireactToBlogPage(e, article)} className="single-post-wrap style-overlay" style={{ width: '100%', height: '', overflow: 'hidden' }}>
                     <div className="thumb" style={{ width: '100%', height: '100%' }}>
                         <img src={article.iconImg} alt="img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
-                    <div onClick={(e) => redireactToBlogPage(e, article)} className="details element" style={{ cursor: "pointer", width: "100%", position: 'absolute', bottom: '80%', paddingLeft: "10px", color: '#fff' }}>
+                    <div className="details element" style={{ cursor: "pointer", width: "100%", position: 'absolute', bottom: '80%', paddingLeft: "10px", color: '#fff' }}>
                         <div className="post-meta-single">
                             <p style={{ fontSize: '14px', color: '#fff' }}>
                                 {new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: '2-digit', year: 'numeric' }).replace(',', '')}
