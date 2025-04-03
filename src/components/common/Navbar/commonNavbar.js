@@ -34,7 +34,6 @@ const CommonNavbar = () => {
   }, [prevScrollY]);
 
   return (
-    <Container>
       <Navbar className="navbar-top navbar-horizontal navbar-dark"
         style={{
           backgroundColor: "#439c8b",
@@ -143,7 +142,6 @@ const CommonNavbar = () => {
           </Collapse>
         </Container>
       </Navbar>
-    </Container>
   );
 };
 
