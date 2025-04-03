@@ -6,6 +6,7 @@ import TrendingSection from "./trendingSection";
 import Footer from "./footer.js";
 import axios from "axios";
 import Loader from "../../../common/Loader/loader.js";
+import { Container } from "reactstrap";
 
 
 const Home = () => {
@@ -32,13 +33,15 @@ const Home = () => {
   return (
     <React.Fragment>
       {data ? (
-        <Fragment>
+       <Container>
+         <Fragment>
           {/* <HomeHeader /> */}
           <CommonNavbar />
           <TrendingSection latestArticle={data} />
           <BannerArea latestArticle={data} />
           <Footer />
         </Fragment>
+       </Container>
       ) : <Loader />}
 
     </React.Fragment>

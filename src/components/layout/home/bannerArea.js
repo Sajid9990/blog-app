@@ -25,14 +25,14 @@ const BannerArea = (props) => {
 
   return (
     <div>
-      <div className="py-1 pt-5" style={{ background: "#439c8b" }} id="banner">
+      <div className="py-1 pt-4" style={{ background: "#439c8b" }} id="banner">
         <Container>
           <div>
             <h2 style={{ color: "white" }}>Most Viewed Articles</h2>
           </div>
         </Container>
 
-        <Container className="mt-5">
+        <Container className="mt-3">
           <Row>
             {
               randomArticles.length > 0 ?
@@ -55,7 +55,7 @@ const BannerArea = (props) => {
                 : ""
             }
           </Row>
-          <center className='pb-5'>
+          <center className='pb-4'>
             <button className='btn btn-dark w-auto'>Load More</button>
           </center>
         </Container>

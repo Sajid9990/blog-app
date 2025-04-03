@@ -25,7 +25,7 @@ const TrendingNews = (props) => {
         setActiveIndex(newIndex);
     };
 
-    const redireactToBlogPage = (event,article) => {
+    const redireactToBlogPage = (event, article) => {
         debugger
         alert(article.id);
     }
@@ -36,7 +36,7 @@ const TrendingNews = (props) => {
             onExited={() => setAnimating(false)}
             key={index}>
             <div className="trending-post">
-                <div className="single-post-wrap style-overlay" style={{ width: '100%', height: '500px', overflow: 'hidden' }}>
+                <div className="single-post-wrap style-overlay" style={{ width: '100%', height: '', overflow: 'hidden' }}>
                     <div className="thumb" style={{ width: '100%', height: '100%' }}>
                         <img src={article.iconImg} alt="img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
@@ -58,14 +58,14 @@ const TrendingNews = (props) => {
         </CarouselItem>
     ));
 
-   
+
 
     useEffect(() => {
         setLatestArticle(props.latestArticle);
     }, []);
 
     return (
-        <div className="post-area pd-top-50 py-5" id="trending">
+        <div className="post-area pd-top-50 py-4" id="trending">
             <Container>
                 <Row>
                     <Col lg="8" className='mb-3'>
@@ -98,9 +98,9 @@ const TrendingNews = (props) => {
                             <h2>Latest Articles</h2>
                         </div>
 
-                        <div style={{ height: '500px', overflowY: 'auto', paddingRight: '0' }}>
+                        <div style={{ height: '370px', overflowY: 'auto', paddingRight: '0' }}>
                             {latestArticle.slice(0, 9).map((article, index) => (
-                                <div onClick={(e) => redireactToBlogPage(e, article)} key={index} className="single-post-list-wrap" style={{ marginBottom: '20px' ,cursor:"pointer"}}>
+                                <div onClick={(e) => redireactToBlogPage(e, article)} key={index} className="single-post-list-wrap" style={{ marginBottom: '20px', cursor: "pointer" }}>
                                     <div className="media">
                                         <div className="media-left">
                                             <Card className="single-post-wrap shadow-sm" style={{ background: "none" }}>

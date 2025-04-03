@@ -7,20 +7,20 @@ const Footer = () => {
     <footer className="blog-footer">
       <Container>
         <Row>
-          <Col>
-            <p className="footer-bottom-text border-right pb-5 mt-3" style={{ color: "white" }}>
-              © {new Date().getFullYear()} Viral Wolf. All rights reserved.
-            </p>
-          </Col>
-          <Col className="footer-section">
-            <h5 className="footer-title text-light">Subscribe And Never Missed New Articles</h5>
+          <Col className="footer-section pl-5" >
+            <h5 className="footer-title" style={{color:"white"}}>Subscribe And Never Missed !!!</h5>
             <Form>
               <FormGroup>
-                <Label className='text-light' for="email">Email</Label>
+                <Label className='' for="email" style={{color:"white"}}>Email</Label>
                 <Input className='w-auto' type="email" name="email" id="email" placeholder="Your email address" />
               </FormGroup>
               <Button color="info" className="btn-custom w-auto text-dark">Subscribe</Button>
             </Form>
+          </Col>
+          <Col>
+            <p className="footer-bottom-text border-left pb-5 mt-3" style={{ color: "white" }}>
+              © {new Date().getFullYear()} Viral Wolf. All rights reserved.
+            </p>
           </Col>
         </Row>
       </Container>

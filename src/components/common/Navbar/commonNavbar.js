@@ -34,18 +34,20 @@ const CommonNavbar = () => {
   }, [prevScrollY]);
 
   return (
-    <>
+    <Container>
       <Navbar className="navbar-top navbar-horizontal navbar-dark"
         style={{
           backgroundColor: "#439c8b",
-          position: "fixed",
-          top: 0,
-          left: 0,
+          // position: "fixed",
+          // top: 0,
+          // left: 0,
+          // right:0,
+          // margin: '0 auto',
           zIndex: 99,
           width: "100%",
           boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
-          transition: "background-color 0.3s ease, transform 0.3s ease", // Smooth transition
-          transform: isNavbarVisible ? "translateY(0)" : "translateY(-100%)", // Hide/show navbar
+          // transition: "background-color 0.3s ease, transform 0.3s ease", // Smooth transition
+          // transform: isNavbarVisible ? "translateY(0)" : "translateY(-100%)", // Hide/show navbar
         }} expand="md">
         <Container className="px-2 d-flex align-items-center">
           <NavbarBrand to="/" tag={Link}>
@@ -141,8 +143,7 @@ const CommonNavbar = () => {
           </Collapse>
         </Container>
       </Navbar>
-      <div style={{ height: "64px" }} />
-    </>
+    </Container>
   );
 };
 
