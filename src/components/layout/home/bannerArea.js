@@ -37,7 +37,6 @@ const BannerArea = (props) => {
             {
               randomArticles.length > 0 ?
                 randomArticles.map((article, index) => {
-                  debugger
                   return (
                     <Col key={index} lg="3" sm="6" className="mb-4" onClick={() => alert("Click")}>
                       <Card className="single-post-wrap shadow-sm" style={{ background: "none" }}>

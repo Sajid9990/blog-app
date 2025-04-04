@@ -31,7 +31,6 @@ const ArticleList = () => {
   }
 
   const deleteArticle = async (articleObj) => {
-    debugger
     if (window.confirm(`Are you sure you want to delete article '${articleObj.title}' ?`)) {
       let result = await httpService.deleteById(`/private/article`, articleObj.id, true);
       if (result.data.status === "SUCCESS") {

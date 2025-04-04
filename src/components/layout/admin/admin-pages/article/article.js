@@ -33,7 +33,6 @@ const Article = () => {
 
   const saveArticle = async (e) => {
     e.preventDefault();
-    debugger
     setLoader(true);
     let result;
     if (!articleObj?.title) {

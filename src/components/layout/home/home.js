@@ -7,7 +7,7 @@ import Footer from "./footer.js";
 import axios from "axios";
 import Loader from "../../../common/Loader/loader.js";
 import { Container } from "reactstrap";
-
+import "./home.css";
 
 const Home = () => {
   const [data, setData] = useState();
@@ -33,7 +33,7 @@ const Home = () => {
   return (
     <React.Fragment>
       {data ? (
-       <Container>
+       <div className="main-container">
          <Fragment>
           {/* <HomeHeader /> */}
           <CommonNavbar />
@@ -41,7 +41,7 @@ const Home = () => {
           <BannerArea latestArticle={data} />
           <Footer />
         </Fragment>
-       </Container>
+       </div>
       ) : <Loader />}
 
     </React.Fragment>

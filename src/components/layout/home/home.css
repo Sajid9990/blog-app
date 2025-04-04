@@ -1,0 +1,22 @@
+.element {
+  background-color: rgb(39 121 103 / 35%);
+  /* Red with 50% opacity */
+}
+
+.main-container {
+  width: 65%;
+  margin: 0 auto;
+}
+
+.latest-container {
+  height: 290px;
+  overflow-y: auto;
+  padding-right: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .main-container {
+    width: 100%;
+  }
+  
+}

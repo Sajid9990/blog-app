@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Carousel, CarouselItem, CarouselIndicators, Button, Card, CardImg } from 'reactstrap';
-import "./trending.css";
+import "./home.css";
 import axios from 'axios';
 
 const TrendingNews = (props) => {
@@ -26,7 +26,6 @@ const TrendingNews = (props) => {
     };
 
     const redireactToBlogPage = (event, article) => {
-        debugger
         alert(article.id);
     }
 
@@ -82,7 +81,7 @@ const TrendingNews = (props) => {
                             <h2>Latest Articles</h2>
                         </div>
 
-                        <div style={{ height: '370px', overflowY: 'auto', paddingRight: '0' }}>
+                        <div className='latest-container'>
                             {latestArticle.slice(0, 9).map((article, index) => (
                                 <div onClick={(e) => redireactToBlogPage(e, article)} key={index} className="single-post-list-wrap" style={{ marginBottom: '20px', cursor: "pointer" }}>
                                     <div className="media">
