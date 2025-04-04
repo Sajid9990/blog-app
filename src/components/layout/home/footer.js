@@ -4,7 +4,7 @@ import './footer.css'; // Import the CSS file
 
 const Footer = () => {
   return (
-    <footer className="blog-footer" style={{borderRadius:"8px 8px 0px 0px"}}>
+    <footer className="blog-footer">
       <Container>
         <Row>
           <Col className="footer-section pl-5" >

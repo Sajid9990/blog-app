@@ -14,9 +14,34 @@
   padding-right: 0;
 }
 
+.navbar-top {
+  border-radius: 0px 0px 8px 8px;
+  background-color: #439c8b;
+  z-index: 99;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.banner {
+  background: #439c8b;
+  border-radius: 8px 8px 8px 8px;
+}
+
 @media only screen and (max-width: 768px) {
   .main-container {
     width: 100%;
   }
-  
+
+  .navbar-top {
+    border-radius: 0px 0px 0px 0px;
+    background-color: #439c8b;
+    z-index: 99;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .banner {
+    background: #439c8b;
+    border-radius: 0px 0px 0px 0px;
+  }
 }

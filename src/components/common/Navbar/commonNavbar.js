@@ -34,22 +34,7 @@ const CommonNavbar = () => {
   }, [prevScrollY]);
 
   return (
-    <Navbar className="navbar-top navbar-horizontal navbar-dark"
-    // style={{borderRadius:"2px 2px 2px 2px"}}
-      style={{
-        borderRadius:"0px 0px 8px 8px",
-        backgroundColor: "#439c8b",
-        // position: "fixed",
-        // top: 0,
-        // left: 0,
-        // right:0,
-        // margin: '0 auto',
-        zIndex: 99,
-        width: "100%",
-        boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
-        // transition: "background-color 0.3s ease, transform 0.3s ease", // Smooth transition
-        // transform: isNavbarVisible ? "translateY(0)" : "translateY(-100%)", // Hide/show navbar
-      }} expand="md">
+    <Navbar className="navbar-top navbar-horizontal" expand="md">
       <Container className="px-2 d-flex align-items-center">
         <NavbarBrand to="/" tag={Link}>
           <img style={{ width: "140px", height: "auto" }} alt="..." src={"/blog-app/assets/logo.png"} />

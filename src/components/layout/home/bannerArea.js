@@ -25,7 +25,7 @@ const BannerArea = (props) => {
 
   return (
     <div>
-      <div className="py-1 pt-4" style={{ background: "#439c8b",borderRadius:"8px 8px 8px 8px"}} id="banner">
+      <div className="py-1 pt-4 banner" id="banner">
         <Container>
           <div>
             <h2 style={{ color: "white" }}>Most Viewed Articles</h2>

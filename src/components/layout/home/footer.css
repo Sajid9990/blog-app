@@ -1,45 +1,56 @@
-
-p{
-    color: #32325D;
+p {
+  color: #32325D;
 }
+
 .blog-footer {
-    background-color: #439c8b;
-    color: #32325D;
-    padding: 40px 0;
+  background-color: #439c8b;
+  color: #32325D;
+  padding: 40px 0;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.footer-title {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+}
+
+.recent-posts,
+.categories {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.recent-posts li,
+.categories li {
+  margin-bottom: 10px;
+}
+
+.recent-posts a,
+.categories a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.recent-posts a:hover,
+.categories a:hover {
+  text-decoration: underline;
+}
+
+.author-bio {
+  margin-bottom: 20px;
+}
+
+.btn-custom {
+  border-radius: 50px;
+}
+
+.footer-bottom-text {
+  font-size: 0.875rem;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .blog-footer {
+    border-radius: 0px 0px 0px 0px;
   }
-  
-  .footer-title {
-    font-size: 1.25rem;
-    margin-bottom: 20px;
-  }
-  
-  .recent-posts, .categories {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  .recent-posts li, .categories li {
-    margin-bottom: 10px;
-  }
-  
-  .recent-posts a, .categories a {
-    text-decoration: none;
-    color: whitesmoke;
-  }
-  
-  .recent-posts a:hover, .categories a:hover {
-    text-decoration: underline;
-  }
-  
-  .author-bio {
-    margin-bottom: 20px;
-  }
-  
-  .btn-custom {
-    border-radius: 50px;
-  }
-  
-  .footer-bottom-text {
-    font-size: 0.875rem;
-  }
-  
+}
