@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Carousel, CarouselItem, CarouselIndicators, Button, Card, CardImg } from 'reactstrap';
+import { Container, Row, Col, Carousel, CarouselItem, CarouselIndicators, Button, Card, CardImg, CardBody } from 'reactstrap';
 import "./home.css";
 import axios from 'axios';
 
@@ -39,7 +39,7 @@ const TrendingNews = (props) => {
                     <div className="thumb" style={{ width: '100%', height: '100%' }}>
                         <img src={article.iconImg} alt="img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
-                    <div className="details element" style={{ cursor: "pointer", width: "100%", position: 'absolute', top: '0', paddingLeft: "10px", color: '#fff', height:"100%" }}>
+                    <div className="details element" style={{ cursor: "pointer", width: "100%", position: 'absolute', top: '0', paddingLeft: "10px", color: '#fff', height: "100%" }}>
                         <div className="post-meta-single">
                             <p style={{ fontSize: '14px', color: '#fff' }}>
                                 {new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: '2-digit', year: 'numeric' }).replace(',', '')}
@@ -66,6 +66,9 @@ const TrendingNews = (props) => {
     return (
         <div className="post-area pd-top-50 py-4" id="trending">
             <Container>
+                
+            </Container>
+            <Container>
                 <Row>
                     <Col lg="8" className='mb-3'>
                         <div>
@@ -87,7 +90,6 @@ const TrendingNews = (props) => {
                                     <div className="media">
                                         <div className="media-left">
                                             <Card className="single-post-wrap shadow-sm" style={{ background: "none" }}>
-                                                {/* <img src={article.iconImg} alt="img" style={{ width: '100px', height: 'auto', marginRight: '15px' }} /> */}
                                                 <CardImg src={article.iconImg} alt="img" style={{ width: '100px', height: 'auto', marginRight: '15px' }} className="card-img" />
                                             </Card>
                                         </div>
