@@ -40,7 +40,7 @@ const TrendingNews = (props) => {
                     <div className="thumb" style={{ width: '100%', height: '100%' }}>
                         <img src={article.iconImg} alt="img" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
-                    <div className="details element" style={{ cursor: "pointer", width: "100%", position: 'absolute', bottom: '80%', paddingLeft: "10px", color: '#fff' }}>
+                    <div className="details element" style={{ cursor: "pointer", width: "100%", position: 'absolute', top: '0', paddingLeft: "10px", color: '#fff', height:"100%" }}>
                         <div className="post-meta-single">
                             <p style={{ fontSize: '14px', color: '#fff' }}>
                                 {new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: '2-digit', year: 'numeric' }).replace(',', '')}
@@ -75,22 +75,6 @@ const TrendingNews = (props) => {
                         <Carousel activeIndex={activeIndex} next={next} previous={previous}>
                             <CarouselIndicators items={latestArticle.slice(0, 3)} activeIndex={activeIndex} onClickHandler={goToIndex} />
                             {slides}
-                            <Button
-                                className="carousel-control-prev"
-                                onClick={previous}
-                                style={{ position: 'absolute', top: '50%', left: '10px', transform: 'translateY(-50%)' }}
-                            >
-                                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span className="sr-only">Previous</span>
-                            </Button>
-                            <Button
-                                className="carousel-control-next"
-                                onClick={next}
-                                style={{ position: 'absolute', top: '50%', right: '10px', transform: 'translateY(-50%)' }}
-                            >
-                                <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span className="sr-only">Next</span>
-                            </Button>
                         </Carousel>
                     </Col>
                     <Col lg="4">
