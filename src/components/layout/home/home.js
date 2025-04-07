@@ -6,7 +6,6 @@ import TrendingSection from "./trendingSection";
 import Footer from "./footer.js";
 import axios from "axios";
 import Loader from "../../../common/Loader/loader.js";
-import { Container } from "reactstrap";
 import "./home.css";
 
 const Home = () => {

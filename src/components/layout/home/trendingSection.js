@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Carousel, CarouselItem, CarouselIndicators, Button, Card, CardImg, CardBody } from 'reactstrap';
+import { Container, Row, Col, Carousel, CarouselItem, CarouselIndicators, Button, Card, CardImg } from 'reactstrap';
 import "./home.css";
-import axios from 'axios';
 
 const TrendingNews = (props) => {
     const [latestArticle, setLatestArticle] = useState([]);
@@ -61,7 +60,7 @@ const TrendingNews = (props) => {
 
     useEffect(() => {
         setLatestArticle(props.latestArticle);
-    }, []);
+    }, [props.latestArticle]);
 
     return (
         <div className="post-area pd-top-50 py-4" id="trending">
@@ -98,7 +97,7 @@ const TrendingNews = (props) => {
                                                 <div className="post-meta-single">
                                                     <h5>{new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: '2-digit', year: 'numeric' }).replace(',', '')}</h5>
                                                 </div>
-                                                <h4 className="title"><a href="#"> {article.title.length > 20 ? article.title.substring(0, 20) + "..." : article.title}</a></h4>
+                                                <h4 className="title"><a href="..."> {article.title.length > 20 ? article.title.substring(0, 20) + "..." : article.title}</a></h4>
                                             </div>
                                         </div>
                                     </div>

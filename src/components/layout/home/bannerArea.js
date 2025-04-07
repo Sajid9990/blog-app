@@ -1,25 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Button, Card, CardImg, CardBody, CardTitle, CardText, Badge, } from 'reactstrap';
+import { Container, Row, Col, Card, CardImg, CardBody, CardTitle, Badge, } from 'reactstrap';
 import './BannerArea.css'; // Import the CSS file
 
 const BannerArea = (props) => {
-  const [latestArticle, setLatestArticle] = useState(props.latestArticle);
+  const [latestArticle] = useState(props.latestArticle);
   const [randomArticles, setRandomArticles] = useState([]);
 
-  const shuffleArticles = () => {
-    let tempArray = [];
-    let availableArticles = [...latestArticle]; // Copy of the latestArticle array
-    for (let i = 0; i < 4; i++) {
-      const randomIndex = Math.floor(Math.random() * availableArticles.length);
-      const randomArticle = availableArticles[randomIndex];
-      tempArray.push(randomArticle);
-      // Remove the selected article to ensure uniqueness
-      availableArticles.splice(randomIndex, 1);
-    }
-    setRandomArticles(tempArray);
-  };
-
   useEffect(() => {
+    const shuffleArticles = () => {
+      let tempArray = [];
+      let availableArticles = [...latestArticle]; // Copy of the latestArticle array
+      for (let i = 0; i < 4; i++) {
+        const randomIndex = Math.floor(Math.random() * availableArticles.length);
+        const randomArticle = availableArticles[randomIndex];
+        tempArray.push(randomArticle);
+        // Remove the selected article to ensure uniqueness
+        availableArticles.splice(randomIndex, 1);
+      }
+      setRandomArticles(tempArray);
+    };
     shuffleArticles();
   }, []);
 

@@ -13,7 +13,7 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let response = await httpService.post("/public/signin", dataForm, true);
-    if (response.data.status == "SUCCESS") {
+    if (response.data.status === "SUCCESS") {
       let data = response.data;
       localStorage.setItem("token", data.token)
       localStorage.setItem("username", data.user.userName)

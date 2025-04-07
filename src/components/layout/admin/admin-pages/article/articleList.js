@@ -20,7 +20,7 @@ const ArticleList = () => {
     setLoader(true);
     const result = await httpService.getAll("/private/articles", true);
     console.log(result);
-    if (result.data.status == "SUCCESS") {
+    if (result.data.status === "SUCCESS") {
       setLoader(false);
       setArticleList(result.data.object);
     }
@@ -43,7 +43,7 @@ const ArticleList = () => {
   const generateLatestArticle = async () => {
     setLoader(true);
     let result = await httpService.getAll("/private/latest/article");
-    if (result.data.status == "SUCCESS") {
+    if (result.data.status === "SUCCESS") {
       setLoader(false);
     }
   }
