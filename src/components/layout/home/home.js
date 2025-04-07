@@ -13,7 +13,8 @@ const Home = () => {
   const [data, setData] = useState();
 
   const getLatestArticle = async () => {
-    const url = `${process.env.PUBLIC_URL}/assets/latest_article.json?unique=${Math.random()}`;
+    // const url = `${process.env.PUBLIC_URL}/assets/latest_article.json?unique=${Math.random()}`;
+    const url = `${process.env.PUBLIC_URL}/assets/latest_article.json?ts=${Date.now()}`;
     const res = await axios(url, {
       method: "GET",
       headers: {
