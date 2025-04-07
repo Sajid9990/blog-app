@@ -1,12 +1,11 @@
 
 import { Fragment, useEffect, useState } from "react";
-import { Container, FormGroup, Input, Form, Row, Col, Card, CardBody, CardHeader, Button, CardTitle } from "reactstrap";
+import { Container, FormGroup, Input, Form, Row, Col, Card, CardBody, CardHeader, Button } from "reactstrap";
 import httpService from "../../../../Http/http.service";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import TextEditor from "./../../../../../common/editor";
 import "./article.css";
 import Loader from "../../../../../common/Loader/loader";
-import { invalid } from "moment";
 
 const Article = () => {
   // INITLIAZATION
@@ -64,7 +63,7 @@ const Article = () => {
     if (articleObj) {
       setArticle(articleObj);
     }
-  }, []);
+  }, [articleObj]);
 
   return (
     <Fragment>

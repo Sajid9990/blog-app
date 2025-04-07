@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { Editor } from '@tinymce/tinymce-react';
 
 const TextEditor = (props) => {

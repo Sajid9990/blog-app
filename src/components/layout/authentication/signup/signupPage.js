@@ -28,7 +28,7 @@ const SignupPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { username, email, password, confirmPassword } = formData;
+    const { password, confirmPassword } = formData;
     if (password !== confirmPassword) {
       setError('Passwords do not match');
       return;

@@ -3,7 +3,7 @@ import { Container, Row, Col, Card, CardImg, CardBody, CardTitle, Badge, } from 
 import './BannerArea.css'; // Import the CSS file
 
 const BannerArea = (props) => {
-  const [latestArticle] = useState(props.latestArticle);
+  const [latestArticle,setLatestArticle] = useState(props.latestArticle);
   const [randomArticles, setRandomArticles] = useState([]);
 
   useEffect(() => {

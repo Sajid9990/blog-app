@@ -1,8 +1,7 @@
-import { BrowserRouter, HashRouter, Route, Routes, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './components/layout/home/home';
 import Admin from './components/layout/admin/admin';
-import Error400 from './components/errors/404_Error';
 import LoginPage from './components/layout/authentication/login/login.js';
 import SignupPage from './components/layout/authentication/signup/signupPage';
 import BlogPage from './components/layout/blog/blog';
