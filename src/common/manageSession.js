@@ -8,7 +8,7 @@ export const isTokenExpaire = (token) => {
         const isExpired = decodedToken.exp * 1000 < currentDate.getTime()
             ? localStorage.clear()
             : "still token is valid";
-        if (isExpired == undefined) {
+        if (isExpired === undefined) {
             console.log("token expired!!! please re-login first...");
             window.location.reload(true);
             // window.location.href = "/"

@@ -57,7 +57,7 @@ const Article = () => {
   }
 
   function pushEditorValue(value) {
-    setArticle({ ...article, ["content"]: value })
+    setArticle({ ...article, "content": value })
   }
 
   useEffect(() => {
