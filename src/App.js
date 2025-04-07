@@ -18,7 +18,7 @@ function App() {
   }
   return (
     /** Using BrowserRouter */
-    <BrowserRouter basename='/blog-app'>
+    <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/admin/*" element={token ? <Admin /> : <LoginPage />} />
