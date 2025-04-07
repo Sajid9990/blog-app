@@ -43,7 +43,7 @@ const BannerArea = (props) => {
                         <Badge className="badge-custom bg-primary text-light">{article.category}</Badge>
                         <CardBody>
                           <CardTitle tag="h5" className="card-title">
-                            <a href="#">{article.title.length > 20 ? article.title.substring(0, 20) + "..." : article.title}</a>
+                            <a href="...">{article.title.length > 20 ? article.title.substring(0, 20) + "..." : article.title}</a>
                           </CardTitle>
                         </CardBody>
                       </Card>
@@ -86,7 +86,7 @@ const BannerArea = (props) => {
                               {article.category}
                             </Badge>
                             <CardTitle className="title">
-                              <a href="#">{article.title.length > 20 ? article.title.substring(0, 20) + "..." : article.title}</a>
+                              <a href="...">{article.title.length > 20 ? article.title.substring(0, 20) + "..." : article.title}</a>
                             </CardTitle>
                           </Col>
                         </Row>

@@ -57,7 +57,7 @@ const Profile = () => {
               <Row className="justify-content-center">
                 <Col className="order-lg-2" lg="3">
                   <div className="card-profile-image">
-                    <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                    <a href="..." onClick={(e) => e.preventDefault()}>
                       <img
                         alt="..."
                         className="rounded-circle"
@@ -131,7 +131,7 @@ const Profile = () => {
                     Nick Murphy — writes, performs and records all of his own
                     music.
                   </p>
-                  <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                  <a href="..." onClick={(e) => e.preventDefault()}>
                     Show more
                   </a>
                 </div>

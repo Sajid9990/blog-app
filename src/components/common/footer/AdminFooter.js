@@ -10,7 +10,7 @@ const Footer = () => {
             © {new Date().getFullYear()}{" "}
             <a
               className="font-weight-bold ml-1"
-              href="#"
+              href="..."
               rel=""
               target="_blank"
             >
