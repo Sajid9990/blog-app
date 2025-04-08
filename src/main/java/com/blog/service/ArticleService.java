@@ -116,5 +116,9 @@ public class ArticleService {
         return true;
     }
 
+    public List<Article> getLatestArticle() {
+        return null;
+    }
+
 
 }
