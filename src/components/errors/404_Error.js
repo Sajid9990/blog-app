@@ -1,34 +1,34 @@
-import React, { useEffect } from "react";
+// import React, { useEffect } from "react";
 import "./404_Error.css";
 import { Link } from "react-router-dom";
 
 const Error400 = () => {
 
-    const moveIcon = () => {
-        const pageX = document.documentElement.clientWidth;
-        const pageY = document.documentElement.clientHeight;
-        let mouseY = 0;
-        let mouseX = 0;
-        try {
+    // const moveIcon = () => {
+    //     const pageX = document.documentElement.clientWidth;
+    //     const pageY = document.documentElement.clientHeight;
+    //     let mouseY = 0;
+    //     let mouseX = 0;
+    //     try {
 
-            document.addEventListener('mousemove', (event) => {
-                // verticalAxis
-                mouseY = event.pageY;
-                const yAxis = (pageY / 2 - mouseY) / pageY * 300;
-                // horizontalAxis
-                mouseX = event.pageX / -pageX;
-                const xAxis = -mouseX * 100 - 100;
+    //         document.addEventListener('mousemove', (event) => {
+    //             // verticalAxis
+    //             mouseY = event.pageY;
+    //             const yAxis = (pageY / 2 - mouseY) / pageY * 300;
+    //             // horizontalAxis
+    //             mouseX = event.pageX / -pageX;
+    //             const xAxis = -mouseX * 100 - 100;
 
-                document.querySelector('.box__ghost-eyes').style.transform = `translate(${xAxis}%, -${yAxis}%)`;
-            });
-        } catch (error) {
+    //             document.querySelector('.box__ghost-eyes').style.transform = `translate(${xAxis}%, -${yAxis}%)`;
+    //         });
+    //     } catch (error) {
 
-        }
-    };
+    //     }
+    // };
 
-    useEffect(() => {
-        // moveIcon();
-    }, []);
+    // useEffect(() => {
+    //     // moveIcon();
+    // }, []);
     return (
         <React.Fragment>
             <div className="box">

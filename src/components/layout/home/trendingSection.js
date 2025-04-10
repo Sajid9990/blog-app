@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Carousel, CarouselItem, CarouselIndicators, Button, Card, CardImg } from 'reactstrap';
 import "./home.css";
+import { useNavigate } from 'react-router-dom';
 
 const TrendingNews = (props) => {
     const [latestArticle, setLatestArticle] = useState([]);
     const [activeIndex, setActiveIndex] = React.useState(0);
     const [animating, setAnimating] = React.useState(false);
+
+    const navigate = useNavigate();
 
     const next = () => {
         if (animating) return;
@@ -25,7 +28,16 @@ const TrendingNews = (props) => {
     };
 
     const redireactToBlogPage = (event, article) => {
-        alert(article.id);
+        const params = new URLSearchParams();
+        params.set("article_id", `${article.id}`);
+        params.set("slug", `${article.description}`);
+        params.set("utm_source", "viralwolf");
+        params.set("utm_medium", "mobile");
+        params.set("utm_campaign", "may");
+        params.set("category", "Test");
+        params.set("language", "english");
+        navigate(`/public/blog?${params.toString()}`);
+        // alert(article.id);
     }
 
     const slides = latestArticle.slice(0, 3).map((article, index) => (
@@ -65,7 +77,7 @@ const TrendingNews = (props) => {
     return (
         <div className="post-area pd-top-50 py-4" id="trending">
             <Container>
-                
+
             </Container>
             <Container>
                 <Row>

@@ -82,7 +82,7 @@ const ArticleList = () => {
                 </CardBody>
               </Card>
             </Col>
-            <Col lg="3" xl="3">
+            {/* <Col lg="3" xl="3">
               <Card className="card-stats mb-4 mb-xl-0">
                 <CardBody>
                   <Row>
@@ -100,7 +100,7 @@ const ArticleList = () => {
                   </Row>
                 </CardBody>
               </Card>
-            </Col>
+            </Col> */}
           </Row>
 
 
