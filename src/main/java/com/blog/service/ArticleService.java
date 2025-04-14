@@ -2,9 +2,13 @@ package com.blog.service;
 
 import com.blog.model.Article;
 import com.blog.repository.ArticleRepo;
+import com.blog.utils.Helper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -106,18 +110,20 @@ public class ArticleService {
         return false;
     }
 
-    public boolean createLatestArticle() {
-        List<Article> articleFileName = new ArrayList<>();
-        List<Article> all = articleRepo.findAll(Sort.by(Sort.Order.desc("id")));
-        all.forEach(article -> {
-            articleFileName.add(article); // add each file name
-        });
-        gitHubServices.upload(articleFileName, "latest_article.json");
-        return true;
-    }
+//    public boolean createLatestArticle() {
+//        List<Article> articleFileName = new ArrayList<>();
+//        List<Article> all = articleRepo.findAll(Sort.by(Sort.Order.desc("id")));
+//        all.forEach(article -> {
+//            articleFileName.add(article); // add each file name
+//        });
+//        gitHubServices.upload(articleFileName, "latest_article.json");
+//        return true;
+//    }
 
-    public List<Article> getLatestArticle() {
-        return null;
+    public Page<Article> getLatestArticle(int page, int size) {
+        Helper.generateSlug("abc fi jkmkv vkfmvf", "mkcmdk cd dcd dcd");
+        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Order.desc("id")));
+        return articleRepo.findAll(pageable);
     }
 
 
