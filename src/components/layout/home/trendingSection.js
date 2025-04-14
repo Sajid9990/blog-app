@@ -37,7 +37,6 @@ const TrendingNews = (props) => {
         params.set("category", "Test");
         params.set("language", "english");
         navigate(`/public/blog?${params.toString()}`);
-        // alert(article.id);
     }
 
     const slides = latestArticle.slice(0, 3).map((article, index) => (
@@ -109,7 +108,7 @@ const TrendingNews = (props) => {
                                                 <div className="post-meta-single">
                                                     <h5>{new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: '2-digit', year: 'numeric' }).replace(',', '')}</h5>
                                                 </div>
-                                                <h4 className="title"><a href="..."> {article.title.length > 20 ? article.title.substring(0, 20) + "..." : article.title}</a></h4>
+                                                <h4 className="title">{article.title.length > 13 ? article.title.substring(0, 13) + "..." : article.title}</h4>
                                             </div>
                                         </div>
                                     </div>

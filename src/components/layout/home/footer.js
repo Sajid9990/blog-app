@@ -7,29 +7,32 @@ const Footer = () => {
     <footer className="blog-footer">
       <Container>
         <Row>
-          <Col className="footer-section pl-5" >
+          <Col className="col-md-7 footer-section pl-5" >
             <h5 className="footer-title" style={{ color: "white" }}>Subscribe And Never Missed !!!</h5>
             <Form>
               <FormGroup>
                 <Label className='' for="email" style={{ color: "white" }}>Email</Label>
-                <Input className='w-auto' type="email" name="email" id="email" placeholder="Your email address" />
+                <Input className='w-75' type="email" name="email" id="email" placeholder="Your email address" />
               </FormGroup>
-              <Button color="info" className="btn-custom w-auto text-dark">Subscribe</Button>
+              <Button color="dark" className="w-auto">Subscribe</Button>
             </Form>
           </Col>
-          <Col className="footer-bottom-text border-left pb-5 mt-3 ">
-            <p style={{ color: "white" }}>
-              © {new Date().getFullYear()} Viral Wolf. All rights reserved.
-            </p>
-
+          <Col className="footer-bottom-text border-left pb-5 mt-3 pt-5 ">
+            <Row>
+              <center>
+                <Button size='sm' className='m-2 w-50 btn btn-dark'>About Us</Button>
+                <Button size='sm' className='m-2 w-50 btn btn-dark'>Contact Us</Button>
+                <Button size='sm' className='m-2 w-50 btn btn-dark'>Privacy Policy</Button>
+              </center>
+            </Row>
           </Col>
         </Row>
-        <hr style={{ color: "white" }} />
-        <Row className='mr-2 ml-2 mb-3 mt-3' style={{ color: "white" }}>
-          <Col>About Us</Col>
-          <Col>Contact Us</Col>
-          <Col>Privacy Policy</Col>
-        </Row>
+        <hr />
+        <p style={{ color: "white" }}>
+          <center>
+            <strong>© {new Date().getFullYear()} Viral Wolf. All rights reserved.</strong>
+          </center>
+        </p>
       </Container>
     </footer>
   );

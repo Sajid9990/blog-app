@@ -1,10 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, CardImg, CardBody, CardTitle, Badge, } from 'reactstrap';
 import './BannerArea.css'; // Import the CSS file
+import { useNavigate } from 'react-router-dom';
 
 const BannerArea = (props) => {
-  const [latestArticle,setLatestArticle] = useState(props.latestArticle);
+  const [latestArticle, setLatestArticle] = useState(props.latestArticle);
   const [randomArticles, setRandomArticles] = useState([]);
+  const navigate = useNavigate();
+
+  const redireactToBlogPage = (event, article) => {
+    const params = new URLSearchParams();
+    params.set("article_id", `${article.id}`);
+    params.set("slug", `${article.description}`);
+    params.set("utm_source", "viralwolf");
+    params.set("utm_medium", "mobile");
+    params.set("utm_campaign", "may");
+    params.set("category", "Test");
+    params.set("language", "english");
+    navigate(`/public/blog?${params.toString()}`);
+  }
 
   useEffect(() => {
     const shuffleArticles = () => {
@@ -37,13 +51,13 @@ const BannerArea = (props) => {
               randomArticles.length > 0 ?
                 randomArticles.map((article, index) => {
                   return (
-                    <Col key={index} lg="3" sm="6" className="mb-4" onClick={() => alert("Click")}>
+                    <Col style={{ cursor: "pointer" }} key={index} lg="3" sm="6" className="mb-4" onClick={(e) => redireactToBlogPage(e, article)}>
                       <Card className="single-post-wrap shadow-sm" style={{ background: "none" }}>
                         <CardImg top src={article.iconImg} alt="Post" className="card-img" />
                         <Badge className="badge-custom bg-primary text-light">{article.category}</Badge>
                         <CardBody>
-                          <CardTitle tag="h5" className="card-title">
-                            <a href="...">{article.title.length > 20 ? article.title.substring(0, 20) + "..." : article.title}</a>
+                          <CardTitle tag="h5" className="card-title text-light">
+                            {article.title.length > 20 ? article.title.substring(0, 20) + "..." : article.title}
                           </CardTitle>
                         </CardBody>
                       </Card>
@@ -71,7 +85,7 @@ const BannerArea = (props) => {
               latestArticle ?
                 latestArticle.slice(0, 8).map((article, index) => {
                   return (
-                    <Col key={index} lg="3" sm="12" className="mb-4">
+                    <Col style={{ cursor: "pointer" }} key={index} lg="3" sm="12" className="mb-4" onClick={(e) => redireactToBlogPage(e, article)}>
                       <Card className="post-card">
                         <Row noGutters>
                           <Col md="12">
@@ -85,8 +99,8 @@ const BannerArea = (props) => {
                             <Badge color={"danger"} className="mb-2">
                               {article.category}
                             </Badge>
-                            <CardTitle className="title">
-                              <a href="...">{article.title.length > 20 ? article.title.substring(0, 20) + "..." : article.title}</a>
+                            <CardTitle className="title text-dark">
+                              {article.title.length > 18 ? article.title.substring(0, 18) + "..." : article.title}
                             </CardTitle>
                           </Col>
                         </Row>
@@ -97,6 +111,9 @@ const BannerArea = (props) => {
                 : ""
             }
           </Row>
+          <center className='pb-4'>
+            <button className='btn btn-dark w-auto'>Load More</button>
+          </center>
         </Container>
       </div>
     </div>

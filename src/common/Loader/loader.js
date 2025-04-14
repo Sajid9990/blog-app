@@ -60,7 +60,7 @@ const Loader = () => {
                         </div>
                     </div>
                     </div>
-                    <p>Wait, please...</p>
+                    <p className="please-wait">Wait, please...</p>
 
                 </div>
             </div>
