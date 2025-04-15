@@ -7,7 +7,7 @@ import Footer from "./footer.js";
 import axios from "axios";
 import Loader from "../../../common/Loader/loader.js";
 import "./home.css";
-import httpService from "../../Http/http.service.js";
+import httpService from "../../../common/Http/http.service.js";
 
 const Home = () => {
   const [data, setData] = useState();

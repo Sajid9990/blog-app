@@ -1,30 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Container, Row, Col, Card, CardImg, CardBody, CardTitle, Badge, } from 'reactstrap';
 import './BannerArea.css'; // Import the CSS file
-import { useNavigate } from 'react-router-dom';
+import { CommonNavigations } from "../../../common/navigations.js";
 
 const BannerArea = (props) => {
   const [latestArticle, setLatestArticle] = useState(props.latestArticle);
   const [randomArticles, setRandomArticles] = useState([]);
-  const navigate = useNavigate();
-
-  const redireactToBlogPage = (event, article) => {
-    const params = new URLSearchParams();
-    params.set("article_id", `${article.id}`);
-    params.set("slug", `${article.description}`);
-    params.set("utm_source", "viralwolf");
-    params.set("utm_medium", "mobile");
-    params.set("utm_campaign", "may");
-    params.set("category", "Test");
-    params.set("language", "english");
-    navigate(`/public/blog?${params.toString()}`);
-  }
+  const { redireactToBlogPage } = CommonNavigations();
 
   useEffect(() => {
     const shuffleArticles = () => {
       let tempArray = [];
       let availableArticles = [...latestArticle]; // Copy of the latestArticle array
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < 8; i++) {
         const randomIndex = Math.floor(Math.random() * availableArticles.length);
         const randomArticle = availableArticles[randomIndex];
         tempArray.push(randomArticle);
@@ -51,17 +39,19 @@ const BannerArea = (props) => {
               randomArticles.length > 0 ?
                 randomArticles.map((article, index) => {
                   return (
-                    <Col style={{ cursor: "pointer" }} key={index} lg="3" sm="6" className="mb-4" onClick={(e) => redireactToBlogPage(e, article)}>
-                      <Card className="single-post-wrap shadow-sm" style={{ background: "none" }}>
-                        <CardImg top src={article.iconImg} alt="Post" className="card-img" />
-                        <Badge className="badge-custom bg-primary text-light">{article.category}</Badge>
-                        <CardBody>
-                          <CardTitle tag="h5" className="card-title text-light">
-                            {article.title.length > 20 ? article.title.substring(0, 20) + "..." : article.title}
-                          </CardTitle>
-                        </CardBody>
-                      </Card>
-                    </Col>
+                    <Fragment>
+                      <Col style={{ cursor: "pointer" }} key={index} lg="3" sm="6" className="mb-4" onClick={(e) => redireactToBlogPage(e, article)}>
+                        <Card className="single-post-wrap shadow-sm" style={{ background: "none" }}>
+                          <CardImg top src={article.iconImg} alt="Post" className="card-img" />
+                          <Badge className="badge-custom bg-primary text-light">{article.category}</Badge>
+                          <CardBody>
+                            <CardTitle tag="h5" className="card-title text-light">
+                              {article.title.length > 20 ? article.title.substring(0, 20) + "..." : article.title}
+                            </CardTitle>
+                          </CardBody>
+                        </Card>
+                      </Col>
+                    </Fragment>
                   );
                 })
                 : ""

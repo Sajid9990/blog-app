@@ -9,6 +9,9 @@ import SingUpWithGoogle from './components/layout/authentication/signup/withGoog
 import Article from './components/layout/admin/admin-pages/article/article.js';
 import { isTokenExpaire } from './common/manageSession.js';
 import Profile from './components/layout/admin/admin-pages/Profile.js';
+import AboutUs from './components/static_pages/aboutUs.js';
+import ContactUs from './components/static_pages/contactUs.js';
+import PrivacyPolicy from './components/static_pages/privacyPolicy.js';
 
 function App() {
   let token = localStorage.getItem("token");
@@ -27,6 +30,9 @@ function App() {
         <Route path="/public/auth/code" element={<SingUpWithGoogle />} />
         <Route path="/admin/article/create-update" element={token ? <Article /> : <LoginPage />} />
         <Route path="/admin/user-profile" element={token ? <Profile /> : <LoginPage />} />
+        <Route path="/public/about_us" element={<AboutUs />} />
+        <Route path="/public/contact_us" element={<ContactUs />} />
+        <Route path="/public/privacy_policy" element={<PrivacyPolicy/>} />
         {/* <Route path="*" element={<Error400 />} /> */}
       </Routes>
     </BrowserRouter>

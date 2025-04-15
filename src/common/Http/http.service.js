@@ -1,4 +1,4 @@
-import { isTokenExpaire } from '../../common/manageSession';
+import { isTokenExpaire } from '../manageSession';
 import http from './http.config';
 
 class ServicesAPI {

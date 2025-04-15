@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './login.css';
-
-import httpService from '../../../Http/http.service';
+import httpService from '../../../../common/Http/http.service';
 import { Button } from 'reactstrap';
 
 const LoginPage = () => {

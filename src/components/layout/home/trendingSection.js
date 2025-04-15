@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Carousel, CarouselItem, CarouselIndicators, Button, Card, CardImg } from 'reactstrap';
 import "./home.css";
-import { useNavigate } from 'react-router-dom';
+import { CommonNavigations } from "../../../common/navigations.js";
 
 const TrendingNews = (props) => {
     const [latestArticle, setLatestArticle] = useState([]);
-    const [activeIndex, setActiveIndex] = React.useState(0);
-    const [animating, setAnimating] = React.useState(false);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [animating, setAnimating] = useState(false);
+    const { redireactToBlogPage } = CommonNavigations();
 
-    const navigate = useNavigate();
 
     const next = () => {
         if (animating) return;
@@ -26,18 +26,6 @@ const TrendingNews = (props) => {
         if (animating) return;
         setActiveIndex(newIndex);
     };
-
-    const redireactToBlogPage = (event, article) => {
-        const params = new URLSearchParams();
-        params.set("article_id", `${article.id}`);
-        params.set("slug", `${article.description}`);
-        params.set("utm_source", "viralwolf");
-        params.set("utm_medium", "mobile");
-        params.set("utm_campaign", "may");
-        params.set("category", "Test");
-        params.set("language", "english");
-        navigate(`/public/blog?${params.toString()}`);
-    }
 
     const slides = latestArticle.slice(0, 3).map((article, index) => (
         <CarouselItem
@@ -59,9 +47,6 @@ const TrendingNews = (props) => {
                             </p>
                         </div>
                     </div>
-                    {/* <div style={{ width: "100%", position: 'absolute', bottom: '75%', color: '#fff' }}>
-                        <Button className="mr-3" color='danger' size="sm" style={{ width: "15%",float:"right" }}>Read</Button>
-                    </div> */}
                 </div>
             </div>
         </CarouselItem>

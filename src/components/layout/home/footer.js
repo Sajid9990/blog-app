@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import './footer.css'; // Import the CSS file
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -20,9 +21,9 @@ const Footer = () => {
           <Col className="footer-bottom-text border-left pb-5 mt-3 pt-5 ">
             <Row>
               <center>
-                <Button size='sm' className='m-2 w-50 btn btn-dark'>About Us</Button>
-                <Button size='sm' className='m-2 w-50 btn btn-dark'>Contact Us</Button>
-                <Button size='sm' className='m-2 w-50 btn btn-dark'>Privacy Policy</Button>
+                <Link to={`/public/about_us`} size='sm' className='m-2 w-50 btn btn-dark'>About Us</Link>
+                <Link to={`/public/contact_us`} size='sm' className='m-2 w-50 btn btn-dark'>Contact Us</Link>
+                <Link to={`/public/privacy_policy`} size='sm' className='m-2 w-50 btn btn-dark'>Privacy Policy</Link>
               </center>
             </Row>
           </Col>

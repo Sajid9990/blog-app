@@ -3,7 +3,7 @@ import { CardImg, Container } from 'reactstrap';
 import './blog.css';
 import { Fragment, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import httpService from '../../Http/http.service';
+import httpService from '../../../common/Http/http.service';
 import Loader from '../../../common/Loader/loader';
 // import axios from 'axios';
 

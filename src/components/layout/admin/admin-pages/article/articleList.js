@@ -1,7 +1,7 @@
 
 import { Fragment, useState } from "react";
 import { Container, Row, Col, Card, CardBody, CardHeader, Button, Table, CardTitle } from "reactstrap";
-import httpService from "../../../../Http/http.service";
+import httpService from "../../../../../common/Http/http.service";
 import { Link, useNavigate } from "react-router-dom";
 import Loader from "../../../../../common/Loader/loader";
 
