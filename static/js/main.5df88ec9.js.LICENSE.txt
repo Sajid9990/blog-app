@@ -76,5 +76,3 @@
  *
  * @license MIT
  */
-
-//! moment.js
